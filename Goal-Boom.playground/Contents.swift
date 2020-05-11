@@ -33,8 +33,7 @@ class IntroductionViewController: UIViewController {
         //        button.center.y = view.frame.height/2
         button.backgroundColor = .white
         button.setTitle("Press Me!", for: .normal)
-//        button.setAttributedTitle(NSAttributedString(string: "Press Me!", attributes: [NSAttributedStringKey: ]), for: <#T##UIControl.State#>)
-//        button.sizeToFit()
+        button.setAttributedTitle(NSAttributedString(string: "Next →", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 0, green: 191/255, blue: 1, alpha: 0.5)]), for: .normal)
         button.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         
         informationView.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.6)
@@ -57,6 +56,7 @@ class IntroductionViewController: UIViewController {
         let backButton = UIButton(type: .custom)
         backButton.setTitle("<-", for: .normal)
         backButton.backgroundColor = .white
+                backButton.setAttributedTitle(NSAttributedString(string: "←", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 0, green: 191/255, blue: 1, alpha: 0.5)]), for: .normal)
         
         let stackView = UIStackView(arrangedSubviews: [backButton, button])
         stackView.spacing = 10
@@ -67,7 +67,6 @@ class IntroductionViewController: UIViewController {
         
         stackView.arrangedSubviews.map { button in
             button.layer.cornerRadius = 10
-//            button.setAtt
         }
         
         
@@ -80,7 +79,6 @@ class IntroductionViewController: UIViewController {
                          stackView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -40),
             stackView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 40),
             stackView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 40),
-
         ]
         
         NSLayoutConstraint.activate(constraits)
@@ -141,7 +139,6 @@ extension CALayer {
         if let colors = colors, colors.count > 4 {
             animation.fromValue = [colors[0], colors[1]]
             animation.toValue = [colors[2], colors[3]]
-            
         } else {
             animation.fromValue = [UIColor.red.cgColor, UIColor.blue.cgColor]
             animation.toValue = [UIColor.yellow.cgColor, UIColor.cyan.cgColor]
