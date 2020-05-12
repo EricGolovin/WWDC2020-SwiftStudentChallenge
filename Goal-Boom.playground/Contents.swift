@@ -6,6 +6,7 @@ import PlaygroundSupport
 class IntroductionViewController: UIViewController {
     
     let colors = [UIColor.red.cgColor, UIColor.blue.cgColor, UIColor.yellow.cgColor, UIColor.cyan.cgColor]
+    var imgManager = ImageManager(numberOfImages: 3)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -13,28 +14,25 @@ class IntroductionViewController: UIViewController {
         updateUI()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        updateUI()
-    }
-    
     func updateUI() {
-        guard let imagePath = Bundle.main.path(forResource: "01Talk", ofType: "png"), let image = UIImage(named: imagePath) else {
+        guard let image = imgManager.getImage(next: true) else {
             fatalError("No Image Found")
         }
         // MARK: - Instantiating UIViews
         let animationView = UIView(frame: view.bounds)
+        let imageView = UIImageView(image: image)
         let blurAffect = UIBlurEffect(style: .systemMaterialLight)
         let blurView = UIVisualEffectView(effect: blurAffect)
         let informationView = UIView()
-        let imageView = UIImageView(image: image)
+        
         
         // MARK: Instantiating Elements
         let backButton = UIButton(type: .custom)
         let nextButton = UIButton()
         let stackView = UIStackView(arrangedSubviews: [backButton, nextButton])
-                
+        
         // MARK: - Configuring UIViews
+        imageView.tag = 100
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -53,10 +51,10 @@ class IntroductionViewController: UIViewController {
         animationView.layer.animate(colors: colors, duration: 5, sizing: animationView.bounds)
         
         // MARK: Configuring Elements
-//        let buttonTitleShadow = NSShadow()
-//        buttonTitleShadow.shadowColor = UIColor.black.cgColor
-//        buttonTitleShadow.shadowOffset = CGSize(width: 10, height: 10)
-//        buttonTitleShadow.shadowBlurRadius = 10
+        //        let buttonTitleShadow = NSShadow()
+        //        buttonTitleShadow.shadowColor = UIColor.black.cgColor
+        //        buttonTitleShadow.shadowOffset = CGSize(width: 10, height: 10)
+        //        buttonTitleShadow.shadowBlurRadius = 10
         backButton.setTitle("<-", for: .normal)
         backButton.backgroundColor = .white
         backButton.setAttributedTitle(NSAttributedString(string: "←", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 0, green: 191/255, blue: 1, alpha: 0.5)]), for: .normal)
@@ -89,11 +87,12 @@ class IntroductionViewController: UIViewController {
         }
         
         // MARK: - Addding Subviews
-        informationView.addSubview(imageView)
+        
         animationView.addSubview(blurView)
         animationView.addSubview(informationView)
-        animationView.addSubview(stackView)
         self.view.addSubview(animationView)
+        self.view.addSubview(imageView)
+        self.view.addSubview(stackView)
         
         // MARK: - Configuring Layout
         let constraits = [
@@ -108,25 +107,47 @@ class IntroductionViewController: UIViewController {
             stackView.arrangedSubviews[0].heightAnchor.constraint(equalToConstant: 50),
             stackView.arrangedSubviews[1].heightAnchor.constraint(equalToConstant: 50),
             imageView.topAnchor.constraint(equalTo: informationView.topAnchor),
-            imageView.rightAnchor.constraint(equalTo: informationView.rightAnchor),
+            imageView.rightAnchor.constraint(equalTo: informationView.rightAnchor, constant: -5),
             imageView.bottomAnchor.constraint(equalTo: informationView.bottomAnchor),
-            imageView.leftAnchor.constraint(equalTo: informationView.leftAnchor),
+            imageView.leftAnchor.constraint(equalTo: informationView.leftAnchor, constant: 5),
         ]
         
         NSLayoutConstraint.activate(constraits)
         
     }
     
-    // Actions
+    // MARK: - Actions
     @objc func backButtonPressed(_ sender: UIButton) {
         print("BackButton Pressed")
+        for subview in view.subviews {
+            if (subview.tag == 100) {
+                let imageView = (subview as! UIImageView)
+                if let image = imgManager.getImage(next: false) {
+                    imageView.image = image
+                } else {
+                    print("Theare No images left")
+                }
+                
+            }
+            
+        }
     }
     @objc func nextButtonPressed(_ sender: UIButton) {
         print("NextButton Pressed")
-        
-        let configuration = ConfigurationViewController()
-        
-        navigationContoller.pushViewController(configuration, animated: true)
+        for subview in view.subviews {
+            if (subview.tag == 100) {
+                let imageView = (subview as! UIImageView)
+                if let image = imgManager.getImage(next: true) {
+                    imageView.image = image
+                } else {
+                    print("There No images left")
+                }
+            }
+        }
+        /*
+         let configuration = ConfigurationViewController()
+         navigationContoller.pushViewController(configuration, animated: true)
+         */
     }
 }
 
@@ -159,6 +180,42 @@ let navigationContoller = UINavigationController(rootViewController: master)
 navigationContoller.navigationBar.isHidden = true
 PlaygroundPage.current.liveView = navigationContoller
 
+
+final class ImageManager {
+    var arrayOfImages = [UIImage]()
+    var counter = 0
+    
+    var mutableCounter: Int {
+        get {
+            return counter
+        }
+        set {
+            if !(newValue < 0) && !(newValue == arrayOfImages.count) {
+                counter = newValue
+            }
+        }
+    }
+    
+    init(numberOfImages: Int) {
+        for i in 0...numberOfImages {
+            if let imagePath = Bundle.main.path(forResource: "Talk" + String(i), ofType: "png"), let image = UIImage(named: imagePath) {
+                arrayOfImages.append(image)
+            }
+        }
+    }
+    
+    func getImage(next: Bool) -> UIImage? {
+        if arrayOfImages.count != 0 && next {
+            let resultImage = arrayOfImages[counter]
+            mutableCounter = counter + 1
+            return resultImage
+        } else if !next {
+            mutableCounter = counter - 1
+            return arrayOfImages[mutableCounter]
+        }
+        return nil
+    }
+}
 
 extension CALayer {
     func animate(colors: [CGColor]?, duration: Double, sizing: CGRect) {
