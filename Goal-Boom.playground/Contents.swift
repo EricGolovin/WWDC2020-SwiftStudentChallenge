@@ -7,6 +7,10 @@ class IntroductionViewController: UIViewController {
     
     let colors = [UIColor.red.cgColor, UIColor.blue.cgColor, UIColor.yellow.cgColor, UIColor.cyan.cgColor]
     var imgManager = ImageManager(numberOfImages: 3)
+    var bButton: UIButton!
+    var nButton: UIButton!
+    var screenCounter = 0
+    var stackV: UIStackView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -15,7 +19,7 @@ class IntroductionViewController: UIViewController {
     }
     
     func updateUI() {
-        guard let image = imgManager.getImage(next: true) else {
+        guard let image = imgManager.getFirstImage() else {
             fatalError("No Image Found")
         }
         // MARK: - Instantiating UIViews
@@ -68,6 +72,8 @@ class IntroductionViewController: UIViewController {
         backButton.titleLabel?.layer.opacity = 1
         backButton.titleLabel?.shadowOffset = CGSize(width: 0, height: 1)
         backButton.addTarget(self, action: #selector(backButtonPressed(_:)), for: .touchUpInside)
+        backButton.isHidden = true
+        bButton = backButton
         
         nextButton.backgroundColor = .white
         nextButton.setTitle("Press Me!", for: .normal)
@@ -77,6 +83,7 @@ class IntroductionViewController: UIViewController {
         nextButton.layer.shadowOffset = .zero
         nextButton.layer.shadowColor = UIColor.white.cgColor
         nextButton.addTarget(self, action: #selector(nextButtonPressed), for: .touchUpInside)
+        nButton = nextButton
         
         stackView.spacing = 10
         stackView.alignment = .center
@@ -85,6 +92,7 @@ class IntroductionViewController: UIViewController {
         stackView.arrangedSubviews.map { button in
             button.layer.cornerRadius = 10
         }
+        stackV = stackView
         
         // MARK: - Addding Subviews
         
@@ -123,7 +131,13 @@ class IntroductionViewController: UIViewController {
             if (subview.tag == 100) {
                 let imageView = (subview as! UIImageView)
                 if let image = imgManager.getImage(next: false) {
-                    imageView.image = image
+//                    UIView.animate(withDuration: 5) {
+//                        imageView.image = image
+//                    }
+                    UIView.transition(with: imageView, duration: 0.75, options: .transitionCrossDissolve, animations: {
+                        imageView.image = image
+                        
+                    }, completion: nil)
                 } else {
                     print("Theare No images left")
                 }
@@ -131,23 +145,53 @@ class IntroductionViewController: UIViewController {
             }
             
         }
+        if screenCounter - 1 != -1  {
+            screenCounter -= 1
+        }
+        if screenCounter == 0 || screenCounter == 2 {
+            bButton.isHidden = true
+        } else {
+            bButton.isHidden = false
+        }
+
     }
+    
     @objc func nextButtonPressed(_ sender: UIButton) {
         print("NextButton Pressed")
         for subview in view.subviews {
             if (subview.tag == 100) {
                 let imageView = (subview as! UIImageView)
                 if let image = imgManager.getImage(next: true) {
-                    imageView.image = image
+//                    UIView.animate(withDuration: 5) {
+//                        imageView.image = image
+//                    }
+                    UIView.transition(with: imageView, duration: 0.75, options: .transitionCrossDissolve, animations: {
+                        imageView.image = image
+                        
+                    }, completion: nil)
                 } else {
                     print("There No images left")
                 }
             }
         }
-        /*
-         let configuration = ConfigurationViewController()
-         navigationContoller.pushViewController(configuration, animated: true)
-         */
+        print(screenCounter)
+        if screenCounter + 1 != imgManager.imageCount {
+            screenCounter += 1
+        }
+        if screenCounter == 0  {
+            bButton.isHidden = true
+        } else if screenCounter == 2 {
+            if bButton.isHidden == true {
+                let configuration = ConfigurationViewController()
+                navigationController?.pushViewController(configuration, animated: true)
+            }
+            bButton.isHidden = true
+            
+            nButton.backgroundColor = UIColor(red: 0, green: 191/255, blue: 1, alpha: 0.5)
+            nButton.setAttributedTitle(NSAttributedString(string: "Motivate Yourself", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]), for: .normal)
+        } else {
+            bButton.isHidden = false
+        }
     }
 }
 
@@ -183,17 +227,10 @@ PlaygroundPage.current.liveView = navigationContoller
 
 final class ImageManager {
     var arrayOfImages = [UIImage]()
-    var counter = 0
+    private var imageCounter = 0
     
-    var mutableCounter: Int {
-        get {
-            return counter
-        }
-        set {
-            if !(newValue < 0) && !(newValue == arrayOfImages.count) {
-                counter = newValue
-            }
-        }
+    var imageCount: Int {
+        arrayOfImages.count
     }
     
     init(numberOfImages: Int) {
@@ -206,12 +243,35 @@ final class ImageManager {
     
     func getImage(next: Bool) -> UIImage? {
         if arrayOfImages.count != 0 && next {
-            let resultImage = arrayOfImages[counter]
-            mutableCounter = counter + 1
+            if imageCounter == 0 {
+                imageCounter = 1
+            }
+            let resultImage = arrayOfImages[imageCounter]
+            if imageCounter + 1 != arrayOfImages.count {
+                imageCounter = imageCounter + 1
+            }
+            print("increase \(imageCounter)")
             return resultImage
         } else if !next {
-            mutableCounter = counter - 1
-            return arrayOfImages[mutableCounter]
+            
+            if imageCounter - 1 != -1 {
+                imageCounter = imageCounter - 1
+            }
+            let resultImage = arrayOfImages[imageCounter]
+            print("decrease \(imageCounter)")
+            return resultImage
+        }
+        return nil
+    }
+    
+    func getFirstImage() -> UIImage? {
+        if arrayOfImages.count != 0 {
+            let resultImage = arrayOfImages[imageCounter]
+            if imageCounter + 1 != arrayOfImages.count {
+                imageCounter = imageCounter + 1
+            }
+            print("increase \(imageCounter)")
+            return resultImage
         }
         return nil
     }
