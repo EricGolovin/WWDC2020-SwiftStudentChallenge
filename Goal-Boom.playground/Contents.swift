@@ -3,6 +3,69 @@ import UIKit
 import CoreGraphics
 import PlaygroundSupport
 
+struct DataManager {
+    static func load() -> [[String: AnyObject]] {
+        guard let path = Bundle.main.path(forResource: "Countries", ofType: "plist"), let items = NSArray(contentsOfFile: path) else {
+            return [[:]]
+        }
+        return items as! [[String: AnyObject]]
+    }
+}
+
+class User {
+    var gender: Gender
+    var region: RegionItem
+    
+    init(gender: Gender, region: RegionItem) {
+        self.gender = gender
+        self.region = region
+    }
+    
+    convenience init(region: RegionItem) {
+        self.init(gender: .unspecified, region: region)
+    }
+}
+
+enum Gender: String {
+    case woman
+    case man
+    case unspecified
+}
+
+class RegionDataManger {
+    private var regions = Array<RegionItem>()
+    
+    var regionList: [RegionItem] {
+        regions
+    }
+    
+    func fetch() {
+        if (regions.count > 0) {
+            regions.removeAll()
+        }
+        for data in DataManager.load() {
+            regions.append(RegionItem(data as! [String: String]))
+        }
+    }
+}
+
+struct RegionItem {
+    var regionName = ""
+    var countries = [String]()
+    var flags = [String]()
+    
+    init(_ region: [String: String]) {
+        for (country, flag) in region {
+            if (country == "Region") {
+                self.regionName = flag
+            } else {
+                countries.append(country)
+                flags.append(flag)
+            }
+        }
+    }
+}
+
 class IntroductionViewController: UIViewController {
     
     let colors = [UIColor.red.cgColor, UIColor.blue.cgColor, UIColor.yellow.cgColor, UIColor.cyan.cgColor]
@@ -14,7 +77,7 @@ class IntroductionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        navigationController?.isNavigationBarHidden = true
         updateUI()
     }
     
@@ -147,10 +210,13 @@ class IntroductionViewController: UIViewController {
         }
         if screenCounter - 1 != -1  {
             screenCounter -= 1
+        } else if screenCounter == 3 {
+            screenCounter = 1
         }
         if screenCounter == 0 || screenCounter == 2 {
             bButton.isHidden = true
         } else {
+            changeNButtonColor()
             bButton.isHidden = false
         }
 
@@ -175,54 +241,129 @@ class IntroductionViewController: UIViewController {
             }
         }
         print(screenCounter)
-        if screenCounter + 1 != imgManager.imageCount {
+        if screenCounter + 1 <= imgManager.imageCount {
             screenCounter += 1
         }
         if screenCounter == 0  {
             bButton.isHidden = true
         } else if screenCounter == 2 {
-            if bButton.isHidden == true {
-                let configuration = ConfigurationViewController()
-                navigationController?.pushViewController(configuration, animated: true)
-            }
-            bButton.isHidden = true
-            
-            nButton.backgroundColor = UIColor(red: 0, green: 191/255, blue: 1, alpha: 0.5)
+            changeNButtonColor()
+        } else             if screenCounter == 3 {
+            let tableViewContoller = CountryTableViewController()
+            navigationController?.pushViewController(tableViewContoller, animated: true)
+        
+    } else {
+            changeNButtonColor()
+            bButton.isHidden = false
+        }
+    }
+    
+    func changeNButtonColor() {
+        if screenCounter == 2 {
+            UIView.animateKeyframes(withDuration: 0.5, delay: 0, options: [.autoreverse], animations: {
+            self.nButton.backgroundColor = UIColor(red: 0, green: 191/255, blue: 1, alpha: 0.7)
+            self.nButton.backgroundColor = UIColor(red: 1, green: 192/255, blue: 203/255, alpha: 0.7)
+        }, completion: { _ in
+            self.nButton.backgroundColor = UIColor(red: 0, green: 191/255, blue: 1, alpha: 0.7)
+        })
             nButton.setAttributedTitle(NSAttributedString(string: "Motivate Yourself", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]), for: .normal)
         } else {
-            bButton.isHidden = false
+            nButton.backgroundColor = .white
+             nButton.setAttributedTitle(NSAttributedString(string: "Next →", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 0, green: 191/255, blue: 1, alpha: 0.5)]), for: .normal)
         }
     }
 }
 
-class ConfigurationViewController: UIViewController {
+class CountryTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    var tableView: UITableView?
+    var regionManager = RegionDataManger()
+    var user: User!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .red
-        updateUI()
-    }
-    
-    func updateUI() {
-        let label = UILabel()
         
-        label.text = "Segue Was Made"
-        label.center = self.view.center
+        let lightBlueColor = UIColor(red: 0, green: 1, blue: 1, alpha: 0.5).cgColor
+        let darkBlueColor = UIColor(red: 65 / 255, green: 105 / 255, blue: 225 / 255, alpha: 0.5).cgColor
         
+        regionManager.fetch()
+        navigationController?.setNavigationBarHidden(true, animated: true)
+        let gradientBackgroundView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+        gradientBackgroundView.layer.animate(colors: [lightBlueColor, UIColor.blue.cgColor, lightBlueColor, darkBlueColor], duration: 3.0, sizing: self.view.bounds)
+        self.tableView = UITableView()
+        self.tableView?.dataSource = self
+        self.tableView?.delegate = self
+        self.tableView?.backgroundColor = .white
+        self.tableView?.register(UITableViewCell.self, forCellReuseIdentifier: "countryCell")
+        view.addSubview(gradientBackgroundView)
+        view.addSubview(self.tableView!)
+        
+        if let tableView = self.tableView {
+            tableView.translatesAutoresizingMaskIntoConstraints = false
+            let constraits = [
+                tableView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 300),
+                tableView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: 0),
+                tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0),
+                tableView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 0),
+            ]
+            
+            NSLayoutConstraint.activate(constraits)
+        } else {
+            fatalError("tableView is nil")
+        }
     }
     
-    @objc func buttonPressed(_ sender: UIButton) {
-        print("Button Pressed")
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return regionManager.regionList.count
     }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return regionManager.regionList[section].countries.count
+    }
     
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        return regionManager.regionList[section].regionName
+//    }
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let label =
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "countryCell", for: indexPath) as UITableViewCell
+        let region = regionManager.regionList[indexPath.section]
+        let countryName = region.countries[indexPath.row]
+        let countryFlag = region.flags[indexPath.row]
+        cell.textLabel?.text = "\(countryName) \(countryFlag)"
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        user = User(region: regionManager.regionList[indexPath.section])
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }
 
+//class CountryCell: UITableViewCell {
+//
+//    private let
+//
+//    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+//        super.init(style: style, reuseIdentifier: reuseIdentifier)
+//
+//
+//    }
+//
+//    required init?(coder aDecoder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
+//}
+
 let master = IntroductionViewController()
+let tableViewContoller = CountryTableViewController()
 let navigationContoller = UINavigationController(rootViewController: master)
-navigationContoller.navigationBar.isHidden = true
-PlaygroundPage.current.liveView = navigationContoller
+PlaygroundPage.current.liveView = tableViewContoller
 
 
 final class ImageManager {
@@ -277,8 +418,12 @@ final class ImageManager {
     }
 }
 
+class BlurCell: UITableViewCell {
+    
+}
+
 extension CALayer {
-    func animate(colors: [CGColor]?, duration: Double, sizing: CGRect) {
+    func animate(colors: [CGColor], duration: Double, sizing: CGRect) {
         let gradient = CAGradientLayer()
         gradient.frame = sizing
         gradient.startPoint = CGPoint(x: 0.0, y: 0.5)
@@ -287,13 +432,13 @@ extension CALayer {
         gradient.locations =  [-0.5, 1.5]
         
         let animation = CABasicAnimation(keyPath: "colors")
-        if let colors = colors, colors.count > 4 {
+//        if let colors = colors, colors.count > 4 {
             animation.fromValue = [colors[0], colors[1]]
             animation.toValue = [colors[2], colors[3]]
-        } else {
-            animation.fromValue = [UIColor.red.cgColor, UIColor.blue.cgColor]
-            animation.toValue = [UIColor.yellow.cgColor, UIColor.cyan.cgColor]
-        }
+//        } else {
+//            animation.fromValue = [UIColor.red.cgColor, UIColor.blue.cgColor]
+//            animation.toValue = [UIColor.yellow.cgColor, UIColor.cyan.cgColor]
+//        }
         animation.duration = 5.0
         animation.autoreverses = true
         animation.repeatCount = Float.infinity
@@ -303,3 +448,8 @@ extension CALayer {
         self.addSublayer(gradient)
     }
 }
+
+
+
+
+
