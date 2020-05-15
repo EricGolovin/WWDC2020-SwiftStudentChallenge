@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>Image</key>
+		<string>ElonMask</string>
+		<key>Name</key>
+		<string>Elon Mask</string>
+		<key>Country</key>
+		<string>🇿🇦</string>
+		<key>Quotes</key>
+		<array>
+			<string>&quot;Human on Mars by 2022!&quot;</string>
+			<string>&quot;Tesla&quot;</string>
+		</array>
+		<key>Info</key>
+		<string>Some Info about Elon Musk\n and more</string>
+		<key>Jobs</key>
+		<array>
+			<string>engineering</string>
+			<string>IT</string>
+			<string>entrepreneurship</string>
+		</array>
+		<key>Gender</key>
+		<string>man</string>
+	</dict>
+</array>
+</plist>

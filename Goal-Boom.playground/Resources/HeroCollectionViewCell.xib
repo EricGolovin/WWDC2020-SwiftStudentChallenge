@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HeroCollectionViewCell"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HeroCollectionViewCell" id="eds-cD-6jL" customClass="HeroCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="150" height="250"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="t4a-mL-RPG">
+                <rect key="frame" x="0.0" y="0.0" width="150" height="250"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Vyh-AM-TOQ" userLabel="Hero Photo">
+                        <rect key="frame" x="16" y="16" width="118" height="150"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="150" id="XqD-2Q-RVR"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quote" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="none" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KAs-ee-yEa">
+                        <rect key="frame" x="16" y="203" width="118" height="39"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="lbX-RA-66O">
+                        <rect key="frame" x="16" y="174" width="118" height="21"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sgB-Re-WOd">
+                                <rect key="frame" x="0.0" y="0.0" width="78" height="21"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🌎" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jwd-fd-35v" userLabel="Country">
+                                <rect key="frame" x="78" y="0.0" width="40" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="YxF-fQ-SLG"/>
+                        </constraints>
+                    </stackView>
+                </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="lbX-RA-66O" secondAttribute="trailing" constant="16" id="Awj-3B-ZWV"/>
+                    <constraint firstAttribute="bottom" secondItem="KAs-ee-yEa" secondAttribute="bottom" constant="8" id="DF9-D3-Gku"/>
+                    <constraint firstItem="lbX-RA-66O" firstAttribute="top" secondItem="Vyh-AM-TOQ" secondAttribute="bottom" constant="8" id="EsP-er-VJa"/>
+                    <constraint firstItem="Vyh-AM-TOQ" firstAttribute="top" secondItem="t4a-mL-RPG" secondAttribute="top" constant="16" id="FK8-En-hBM"/>
+                    <constraint firstAttribute="trailing" secondItem="KAs-ee-yEa" secondAttribute="trailing" constant="16" id="GSB-gH-tdM"/>
+                    <constraint firstItem="KAs-ee-yEa" firstAttribute="leading" secondItem="t4a-mL-RPG" secondAttribute="leading" constant="16" id="TQ9-ce-pPO"/>
+                    <constraint firstAttribute="trailing" secondItem="Vyh-AM-TOQ" secondAttribute="trailing" constant="16" id="VAU-vf-290"/>
+                    <constraint firstItem="Vyh-AM-TOQ" firstAttribute="leading" secondItem="t4a-mL-RPG" secondAttribute="leading" constant="16" id="iv7-9n-E4f"/>
+                    <constraint firstItem="lbX-RA-66O" firstAttribute="leading" secondItem="t4a-mL-RPG" secondAttribute="leading" constant="16" id="jKt-6s-juC"/>
+                    <constraint firstItem="KAs-ee-yEa" firstAttribute="top" secondItem="lbX-RA-66O" secondAttribute="bottom" constant="8" id="qlj-6f-Llv"/>
+                </constraints>
+            </collectionViewCellContentView>
+            <size key="customSize" width="341" height="438"/>
+            <point key="canvasLocation" x="-398.55072463768118" y="-87.053571428571431"/>
+        </collectionViewCell>
+    </objects>
+</document>
