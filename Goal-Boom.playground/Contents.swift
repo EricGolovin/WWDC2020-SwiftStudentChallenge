@@ -15,14 +15,16 @@ struct DataManager {
 class User {
     var gender: Gender
     var region: RegionItem
+    var occupation: Occupation
     
-    init(gender: Gender, region: RegionItem) {
+    init(gender: Gender, region: RegionItem, occupation: Occupation) {
         self.gender = gender
         self.region = region
+        self.occupation = occupation
     }
     
     convenience init(region: RegionItem) {
-        self.init(gender: .unspecified, region: region)
+        self.init(gender: .unspecified, region: region, occupation: .developer)
     }
 }
 
@@ -30,6 +32,24 @@ enum Gender: String, CaseIterable {
     case woman
     case man
     case unspecified
+}
+
+enum Occupation: String, CaseIterable {
+    case police = "Police Officer"
+    case engineer = "Engineer"
+    case entrepreneur = "Entrepreneur"
+    case doctor = "Doctor"
+    case chef = "Chef"
+    case investor = "Investor"
+    case singer = "Singer"
+    case teacher = "Teacher"
+    case developer = "Developer"
+    case lawyer = "Lawyer"
+    case inventor = "Inventor"
+    case scientist = "Scientist"
+    case artist = "Artist"
+    case pilot = "Pilot"
+    case astronaut = "Astronaut"
 }
 
 
@@ -40,7 +60,7 @@ class TableDataManger<Item> where Item: BlurCellDataProtocol {
         elements
     }
     
-    init() {
+    init(gender: Gender = .unspecified, occupation: Occupation = .developer, country: String = "") {
         if Item.self is RegionItem.Type {
             self.fetchRegions()
         } else if Item.self is GenderItem.Type {
@@ -48,7 +68,7 @@ class TableDataManger<Item> where Item: BlurCellDataProtocol {
         } else if Item.self is OccupationItem.Type {
             self.fetchOccupations()
         } else if Item.self is HeroItem.Type {
-            self.fetchHeros()
+            self.fetchHeros(gender: gender, occupation: occupation, region: country)
         }
     }
     
@@ -79,25 +99,52 @@ class TableDataManger<Item> where Item: BlurCellDataProtocol {
         }
     }
     
-    func fetchHeros() {
+    func fetchHeros(gender: Gender, occupation: Occupation, region: String) {
         if (elements.count > 0) {
             elements.removeAll()
         }
         for data in DataManager.loadPlist(name: "Heros") {
-            elements.append(HeroItem(data) as! Item)
+            var checker = 0
+            for (key, value) in data {
+                switch key.lowercased() {
+                case "gender":
+                    if let heroGender = value as? String, heroGender == gender.rawValue {
+                        checker += 1
+                    }
+                case "jobs":
+                    for job in value as! Array<String> {
+                        if job == occupation.rawValue.lowercased() {
+                            checker += 1
+                        }
+                    }
+                case "country":
+                    let countryComponents = (value as! String).components(separatedBy: " ")
+                    if countryComponents[2].lowercased() == region.lowercased() {
+                        checker += 1
+                    }
+                default:
+                    break
+                }
+            }
+            if checker == 3 {
+                elements.append(HeroItem(data) as! Item)
+            }
         }
     }
 }
 
+
 struct HeroItem: BlurCellDataProtocol {
+    var name: String
     var images: [UIImage]
     var quotes: [String]
     var information: String
-    var occupations: [String]
+    var occupations: [Occupation]
     var elements: [(emoji: String, title: String)]
     var gender: Gender
     
     init(_ hero: [String: AnyObject]) {
+        self.name = ""
         self.elements = [(emoji: "", title: "")]
         self.quotes = []
         self.images = []
@@ -105,12 +152,14 @@ struct HeroItem: BlurCellDataProtocol {
         self.information = ""
         self.gender = .unspecified
         for (key, value) in hero {
-//            print(key)
+            //            print(key)
             switch key {
             case "Name":
-                elements[0].emoji = value as! String
+                name = value as! String
             case "Country":
-                elements[0].title = value as! String
+                let regionComponents = (value as! String).components(separatedBy: " ")
+                elements[0].emoji = regionComponents[1]
+                elements[0].title = regionComponents[0]
             case "Quotes":
                 for quote in value as! Array<String> {
                     quotes.append(quote)
@@ -124,7 +173,40 @@ struct HeroItem: BlurCellDataProtocol {
                 }
             case "Jobs":
                 for job in value as! Array<String> {
-                    occupations.append(job)
+                    switch job.lowercased() {
+                    case "police":
+                        self.occupations.append(.police)
+                    case "engineer":
+                        self.occupations.append(.engineer)
+                    case "entrepreneur":
+                        self.occupations.append(.entrepreneur)
+                    case "doctor":
+                        self.occupations.append(.doctor)
+                    case "chef":
+                        self.occupations.append(.chef)
+                    case "investor":
+                        self.occupations.append(.inventor)
+                    case "singer":
+                        self.occupations.append(.singer)
+                    case "teacher":
+                        self.occupations.append(.teacher)
+                    case "developer":
+                        self.occupations.append(.developer)
+                    case "lawyer":
+                        self.occupations.append(.lawyer)
+                    case "inventor":
+                        self.occupations.append(.inventor)
+                    case "scientist":
+                        self.occupations.append(.scientist)
+                    case "artist":
+                        self.occupations.append(.artist)
+                    case "pilot":
+                        self.occupations.append(.pilot)
+                    case "astronaut":
+                        self.occupations.append(.astronaut)
+                    default:
+                        print("Error in job title: No such job names \(job)")
+                    }
                 }
             case "Info":
                 self.information = value as! String
@@ -145,6 +227,7 @@ struct HeroItem: BlurCellDataProtocol {
         }
     }
 }
+
 
 struct GenderItem: BlurCellDataProtocol {
     var elements: [(emoji: String, title: String)]
@@ -668,7 +751,7 @@ class OccupationTableViewController: UIViewController, UITableViewDataSource, UI
     var tableView: UITableView?
     var user: User!
     
-    var genderManager = TableDataManger<OccupationItem>()
+    var dataModel = TableDataManger<OccupationItem>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -680,7 +763,7 @@ class OccupationTableViewController: UIViewController, UITableViewDataSource, UI
         self.tableView?.dataSource = self
         self.tableView?.delegate = self
         self.tableView?.backgroundColor = .white
-        self.tableView?.register(BlurTableViewCell.self, forCellReuseIdentifier: "genderCell")
+        self.tableView?.register(BlurTableViewCell.self, forCellReuseIdentifier: "occupationCell")
         
         let gestureRecogniser = UISwipeGestureRecognizer(target: self, action: #selector(userSwiped(_:)))
         
@@ -737,18 +820,18 @@ class OccupationTableViewController: UIViewController, UITableViewDataSource, UI
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return genderManager.elementsList.count
+        return dataModel.elementsList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "genderCell", for: indexPath) as! BlurTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "occupationCell", for: indexPath) as! BlurTableViewCell
         let emoji: String
         if let user = user {
-            emoji = genderManager.elementsList[indexPath.row].elements[0].emoji.getEmojiType(type: user.gender)
+            emoji = dataModel.elementsList[indexPath.row].elements[0].emoji.getEmojiType(type: user.gender)
         } else {
-            emoji = genderManager.elementsList[indexPath.row].elements[0].emoji.getEmojiType(type: .man)
+            emoji = dataModel.elementsList[indexPath.row].elements[0].emoji.getEmojiType(type: .man)
         }
-        let title = genderManager.elementsList[indexPath.row].elements[0].title
+        let title = dataModel.elementsList[indexPath.row].elements[0].title
         cell.set(emoji: emoji, country: title)
         cell.accessoryType = .disclosureIndicator
         cell.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.2)
@@ -761,8 +844,15 @@ class OccupationTableViewController: UIViewController, UITableViewDataSource, UI
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let heroCollectionViewController = HerosCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
+        Occupation.allCases.forEach {
+            if $0.rawValue.lowercased() == dataModel.elementsList[indexPath.row].elements[0].title.lowercased() {
+                self.user.occupation = $0
+            }
+        }
+        heroCollectionViewController.user = user
         tableView.deselectRow(at: indexPath, animated: true)
+        navigationController?.pushViewController(heroCollectionViewController, animated: true)
     }
     
     @objc func userSwiped(_ sender: UIGestureRecognizer) {
@@ -774,11 +864,16 @@ class OccupationTableViewController: UIViewController, UITableViewDataSource, UI
 class HerosCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     var dataManager: TableDataManger<HeroItem>!
+    var user: User!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionView.register(HeroCollectionViewCell.self, forCellWithReuseIdentifier: "heroCell")
-        self.dataManager = TableDataManger<HeroItem>()
+        self.dataManager = TableDataManger<HeroItem>(gender: user.gender, occupation: user.occupation, country: user.region.regionName)
+        
+        print(user.gender.rawValue)
+        print(user.occupation.rawValue)
+        print(user.region.regionName)
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -794,24 +889,24 @@ class HerosCollectionViewController: UICollectionViewController, UICollectionVie
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "heroCell", for: indexPath) as! HeroCollectionViewCell
         
         cell.heroImageView.image = dataManager.elementsList[0].images[0]
-        cell.heroNameLabel.text = dataManager.elementsList[0].elements[0].title
+        cell.heroNameLabel.text = dataManager.elementsList[0].name
         cell.heroCountryLabel.text = dataManager.elementsList[0].elements[0].emoji
         cell.heroQuoteLabel.text = dataManager.elementsList[0].quotes.first
-        
+
         switch dataManager.elementsList[0].gender {
         case .man:
             let subCellView = cell.contentView.subviews[0]
             let cellView = cell.contentView.subviews[0].subviews[0]
-            
+
             subCellView.backgroundColor = .white
             cellView.backgroundColor = UIColor(red: 225/255, green: 1, blue: 1, alpha: 0.5 )
         default:
             print("Ffff")
             break
         }
-//        cell.heroNameLabel.text = "Hero"
-//        cell.heroCountryLabel.text = "🇹🇴"
-//        cell.heroQuoteLabel.text = "Be Productive!"
+        //        cell.heroNameLabel.text = "Hero"
+        //        cell.heroCountryLabel.text = "🇹🇴"
+        //        cell.heroQuoteLabel.text = "Be Productive!"
         
         return cell
     }
@@ -859,6 +954,7 @@ class HeroCollectionViewCell: UICollectionViewCell {
             }
             
         }
+        self.heroNameLabel.adjustsFontSizeToFitWidth = true
         contentView.addSubview(nibView!)
     }
     
@@ -921,7 +1017,7 @@ let tableViewContoller = CountryTableViewController()
 let genderViewController = GenderTableViewController()
 let occupationViewController = OccupationTableViewController()
 let collectionViewController = HerosCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
-let navigationContoller = UINavigationController(rootViewController: collectionViewController)
+let navigationContoller = UINavigationController(rootViewController: master)
 navigationContoller.preferredContentSize = CGSize(width: 350, height: 700)
 PlaygroundPage.current.liveView = navigationContoller
 
