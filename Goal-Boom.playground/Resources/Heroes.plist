@@ -59,7 +59,7 @@ There’s no doubt that he had a huge influence on society, though. His inventio
 		<key>Name</key>
 		<string>Henry Ford</string>
 		<key>Country</key>
-		<string>USA 🇺🇸 NorthAmerica</string>
+		<string>USA 🇺🇸 America</string>
 		<key>Quotes</key>
 		<array>
 			<string>&quot;Coming together is a beginning, staying together is progress, and working together is success.&quot;</string>
@@ -73,7 +73,8 @@ There’s no doubt that he had a huge influence on society, though. His inventio
 			<string>inventor</string>
 			<string>scientist</string>
 			<string>engineer</string>
-			<string>enterpreneur</string>
+			<string>entrepreneur</string>
+			<string>investor</string>
 		</array>
 		<key>Gender</key>
 		<string>man</string>
@@ -156,7 +157,7 @@ There’s no doubt that he had a huge influence on society, though. His inventio
 		<key>Name</key>
 		<string>Wright Brothers</string>
 		<key>Country</key>
-		<string>USA 🇺🇸 NorthAmerica</string>
+		<string>USA 🇺🇸 America</string>
 		<key>Quotes</key>
 		<array>
 			<string>&quot;The airplane stays up because it doesn&apos;t have the time to fall.&quot;</string>
@@ -217,6 +218,233 @@ There’s no doubt that he had a huge influence on society, though. His inventio
 			<string>inventor</string>
 			<string>scientist</string>
 			<string>engineer</string>
+		</array>
+		<key>Gender</key>
+		<string>man</string>
+	</dict>
+	<dict>
+		<key>Image</key>
+		<string>JosephineGoube</string>
+		<key>Name</key>
+		<string>Josephine Goube</string>
+		<key>Country</key>
+		<string>France 🇫🇷 Europe</string>
+		<key>Quotes</key>
+		<array>
+			<string>-</string>
+		</array>
+		<key>Info</key>
+		<string>A French innovator with a heart of gold, Goube has shown that entrepreneurial innovation and humanitarianism can go hand in hand together. She is the CEO of Techfugees, a social enterprise that helps to coordinate the charitable efforts of the global tech community in helping respond to various refugee crises worldwide.</string>
+		<key>Jobs</key>
+		<array>
+			<string>inventor</string>
+			<string>entrepreneur</string>
+			<string>engineer</string>
+			<string>developer</string>
+		</array>
+		<key>Gender</key>
+		<string>woman</string>
+	</dict>
+	<dict>
+		<key>Image</key>
+		<string>RobertGentz</string>
+		<key>Name</key>
+		<string>Robert Gentz</string>
+		<key>Country</key>
+		<string>Germany 🇩🇪 Europe</string>
+		<key>Quotes</key>
+		<array>
+			<string>-</string>
+		</array>
+		<key>Info</key>
+		<string>The German started the eCommerce platform Zalando in 2008 when he was just 23 years-old. Predominantly specializing in shoes, the company has gone from strength to strength, with a current value of a staggering 6.8 billion euros and 5,000 staff on the payroll. In the realms of entrepreneurial eCommerce, Gentz is truly one of the prototypes on how to do things correctly.</string>
+		<key>Jobs</key>
+		<array>
+			<string>inventor</string>
+			<string>entrepreneur</string>
+			<string>engineer</string>
+			<string>developer</string>
+		</array>
+		<key>Gender</key>
+		<string>man</string>
+	</dict>
+	<dict>
+		<key>Image</key>
+		<string>OliverDlouhy</string>
+		<key>Name</key>
+		<string>Oliver Dlouhy</string>
+		<key>Country</key>
+		<string>Czechia 🇨🇿 Europe</string>
+		<key>Quotes</key>
+		<array>
+			<string>-</string>
+		</array>
+		<key>Info</key>
+		<string>Despite having nothing more under his belt than a highschool education from his native Czech Republic, Dlouhy went on to develop a flight-booking algorithm designed to deliver the lowest possible fares by integrating flights from carriers that typically wouldn’t cooperate with one another. As the sole founder of Kiwi.com, Dlouhy has seen his company grow exponentially in just a few years and it seems that this year there’s no sign of business falling off.</string>
+		<key>Jobs</key>
+		<array>
+			<string>inventor</string>
+			<string>entrepreneur</string>
+			<string>engineer</string>
+			<string>developer</string>
+		</array>
+		<key>Gender</key>
+		<string>man</string>
+	</dict>
+	<dict>
+		<key>Image</key>
+		<string>GertvanVugt</string>
+		<key>Name</key>
+		<string>Gert van Vugt</string>
+		<key>Country</key>
+		<string>Netherlands 🇳🇱 Europe</string>
+		<key>Quotes</key>
+		<array>
+			<string>-</string>
+		</array>
+		<key>Info</key>
+		<string>At less than 30 years of age, the ambitious Dutchman has achieved much in a short span of time. As the sole founder of Sustainer Homes, van Vugt set out to reduce carbon emissions in the construction industry, which accounts for a third of the world’s carbon dioxide emissions. His company employs the latest green technologies to create sustainable homes that cut out 90% of greenhouse gases from the construction process. Hundreds of these green homes have already been built, and there are even plans underway to build three whole sustainable neighborhoods by the end of the year.</string>
+		<key>Jobs</key>
+		<array>
+			<string>inventor</string>
+			<string>entrepreneur</string>
+			<string>engineer</string>
+			<string>scientist</string>
+		</array>
+		<key>Gender</key>
+		<string>man</string>
+	</dict>
+	<dict>
+		<key>Image</key>
+		<string>JamieBolding</string>
+		<key>Name</key>
+		<string>Jamie Bolding</string>
+		<key>Country</key>
+		<string>UK 🇬🇧 Europe</string>
+		<key>Quotes</key>
+		<array>
+			<string>-</string>
+		</array>
+		<key>Info</key>
+		<string>Hailing from the United Kingdom, bolding is the sole founder of the meteorically successful Jungle Creations. This social media marketing platform helps connect users with a talent for viral content creation join forces with the biggest companies looking to crowdsource fresh talent to help put their latest campaigns together. Numbering titans of business like Apple and Disney amongst their client base, 50 million followers help this site generate 5 billion unique video views every month, making for one of the most lively social marketing networks around.</string>
+		<key>Jobs</key>
+		<array>
+			<string>inventor</string>
+			<string>entrepreneur</string>
+			<string>engineer</string>
+		</array>
+		<key>Gender</key>
+		<string>man</string>
+	</dict>
+	<dict>
+		<key>Image</key>
+		<string>MaxPolyakov</string>
+		<key>Name</key>
+		<string>Dr. Max Polyakov</string>
+		<key>Country</key>
+		<string>Ukraine 🇺🇦 Europe</string>
+		<key>Quotes</key>
+		<array>
+			<string>-</string>
+		</array>
+		<key>Info</key>
+		<string>There seems to be no limit to the ambitions of the Ukrainian technologist and entrepreneur Dr. Max Polyakov, whose many businesses have interests in the development of medical technology, drones, AI and, most intriguingly, space technology. One of his most recent achievements was coming to the rescue of the rocket development company Firefly Space Systems after they declared bankruptcy in 2016. Now, with the generous backing of Dr. Polyakov’s Noosphere Ventures, Firefly Aerospace (as it’s been renamed) is back with a more ambitious long-term plan than ever before to develop small and medium satellite launch solutions using the very latest astro technology and materials.</string>
+		<key>Jobs</key>
+		<array>
+			<string>inventor</string>
+			<string>entrepreneur</string>
+			<string>engineer</string>
+		</array>
+		<key>Gender</key>
+		<string>man</string>
+	</dict>
+	<dict>
+		<key>Image</key>
+		<string>ErikGatenholm</string>
+		<key>Name</key>
+		<string>Erik Gatenholm</string>
+		<key>Country</key>
+		<string>Sweden 🇸🇪 Europe</string>
+		<key>Quotes</key>
+		<array>
+			<string>-</string>
+		</array>
+		<key>Info</key>
+		<string>The ambitious Swede co-founded Cellink, a forward-thinking company that is the principal innovator in developing 3D printing technology to create human organs used in medical research. The premise is astonishing, but Gatenholm is clearly a persuasive individual, taking the company public on the Nasdaq exchange a mere ten months after the company went live. It currently holds some particularly prestigious clients on their books, including Takara Bio and MIT, with an operation that ships to more than 40 countries across the globe.</string>
+		<key>Jobs</key>
+		<array>
+			<string>inventor</string>
+			<string>entrepreneur</string>
+			<string>developer</string>
+			<string>engineer</string>
+		</array>
+		<key>Gender</key>
+		<string>man</string>
+	</dict>
+	<dict>
+		<key>Image</key>
+		<string>KritiSharma</string>
+		<key>Name</key>
+		<string>Kriti Sharma</string>
+		<key>Country</key>
+		<string>India 🇮🇳 Asia</string>
+		<key>Quotes</key>
+		<array>
+			<string>-</string>
+		</array>
+		<key>Info</key>
+		<string>As the vice president of AI and Bots at Sage, Sharma is helping to oversee one of the United Kingdom’s largest emerging tech companies. She’s helping her business lead the way in the arena of chatbot development, which is increasingly becoming a frontier in the realms of smart customer service. She’s dedicated herself to developing more diverse and ethically sensitive artificial intelligent systems that improve customer engagement in business and financial sectors. However, Sharma is solidly opposed to trying to make bots better mimic humans and instead focuses on programming the software for maximum utility and user-friendliness.</string>
+		<key>Jobs</key>
+		<array>
+			<string>inventor</string>
+			<string>entrepreneur</string>
+			<string>developer</string>
+		</array>
+		<key>Gender</key>
+		<string>woman</string>
+	</dict>
+	<dict>
+		<key>Image</key>
+		<string>KonstantinRangelov</string>
+		<key>Name</key>
+		<string>Konstantin Rangelov</string>
+		<key>Country</key>
+		<string>Bulgaria 🇧🇬 Europe</string>
+		<key>Quotes</key>
+		<array>
+			<string>-</string>
+		</array>
+		<key>Info</key>
+		<string>In his capacity as Chief Technical Officer and co-founder of Dronamics, the Bulgarian entrepreneur Konstantin Rangelov has thrown himself into looking into the tantalizing possibilities offered by unmanned air haulage technology for transporting high volume payloads over great distances. His plans for cargo drones aim to dramatically reduce the costs of both the manufacturing and operation for air freight services to open up trade possibilities for billions of people all over the world who are out of range of major delivery hubs. The successful implementation of this technology could make same-day international delivery an affordable reality and help connect a huge number of people with global trade networks.</string>
+		<key>Jobs</key>
+		<array>
+			<string>inventor</string>
+			<string>engineer</string>
+			<string>entrepreneur</string>
+			<string>developer</string>
+		</array>
+		<key>Gender</key>
+		<string>man</string>
+	</dict>
+	<dict>
+		<key>Image</key>
+		<string>MateRimac</string>
+		<key>Name</key>
+		<string>Mate Rimac</string>
+		<key>Country</key>
+		<string>Bosnia&amp;Herzegovina 🇧🇦 Europe</string>
+		<key>Quotes</key>
+		<array>
+			<string>&quot;Most of these people would be outside Croatia if it wasn’t for this company.&quot;</string>
+			<string>&quot;A lot of people wanted to introduce Elon Musk to me, but I didn’t want that.&quot;</string>
+		</array>
+		<key>Info</key>
+		<string>The young Croatian is the CEO of Rimac Automobili, a car manufacturer with ties to the development of all aspects of the transportation systems of the future. High-performance electric cars, battery systems, and drivetrain technology are all cutting-edge technology, and the company currently has the world’s fastest production model electric car, the Concept One. In addition, Rimac started Greyp Bikes in 2013, which aims to make it big in roads by applying electric automobile technology to two-wheeled vehicles.</string>
+		<key>Jobs</key>
+		<array>
+			<string>inventor</string>
+			<string>engineer</string>
+			<string>entrepreneur</string>
 		</array>
 		<key>Gender</key>
 		<string>man</string>
