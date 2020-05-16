@@ -103,7 +103,7 @@ class TableDataManger<Item> where Item: BlurCellDataProtocol {
         if (elements.count > 0) {
             elements.removeAll()
         }
-        for data in DataManager.loadPlist(name: "Heros") {
+        for data in DataManager.loadPlist(name: "Heroes") {
             var checker = 0
             for (key, value) in data {
                 switch key.lowercased() {
@@ -844,7 +844,7 @@ class OccupationTableViewController: UIViewController, UITableViewDataSource, UI
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let heroCollectionViewController = HerosCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
+        let heroCollectionViewController = HeroesCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
         Occupation.allCases.forEach {
             if $0.rawValue.lowercased() == dataModel.elementsList[indexPath.row].elements[0].title.lowercased() {
                 self.user.occupation = $0
@@ -861,7 +861,7 @@ class OccupationTableViewController: UIViewController, UITableViewDataSource, UI
     
 }
 
-class HerosCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class HeroesCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     var dataManager: TableDataManger<HeroItem>!
     var user: User!
@@ -869,15 +869,29 @@ class HerosCollectionViewController: UICollectionViewController, UICollectionVie
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionView.register(HeroCollectionViewCell.self, forCellWithReuseIdentifier: "heroCell")
-        self.dataManager = TableDataManger<HeroItem>(gender: user.gender, occupation: user.occupation, country: user.region.regionName)
+        if let user = user {
+            self.dataManager = TableDataManger<HeroItem>(gender: user.gender, occupation: user.occupation, country: user.region.regionName)
+        } else {
+            self.dataManager = TableDataManger<HeroItem>(gender: .man, occupation: .developer, country: "Africa")
+        }
         
-        print(user.gender.rawValue)
-        print(user.occupation.rawValue)
-        print(user.region.regionName)
+        collectionView.backgroundColor = .clear
+        
+        let colors = [UIColor.blue.cgColor, UIColor.purple.cgColor, UIColor.white.cgColor, UIColor.black.cgColor]
+        let blurView = UIView()
+        blurView.frame = self.view.bounds
+        blurView.layer.animate(colors: colors, duration: 5.0, sizing: blurView.bounds)
+        
+        self.view.addSubview(blurView)
+        self.view.sendSubviewToBack(blurView)
+        
+//        self.view.layer.animate(colors: [UIColor.yellow.cgColor, UIColor.blue.cgColor, UIColor.green.cgColor, UIColor.purple.cgColor], duration: 2.0, sizing: self.view.bounds)
+//        self.view.backgroundColor = .green
+        
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        20
+        dataManager.elementsList.count
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -888,25 +902,28 @@ class HerosCollectionViewController: UICollectionViewController, UICollectionVie
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "heroCell", for: indexPath) as! HeroCollectionViewCell
         
-        cell.heroImageView.image = dataManager.elementsList[0].images[0]
-        cell.heroNameLabel.text = dataManager.elementsList[0].name
-        cell.heroCountryLabel.text = dataManager.elementsList[0].elements[0].emoji
-        cell.heroQuoteLabel.text = dataManager.elementsList[0].quotes.first
+        let heroByIndex = dataManager.elementsList[indexPath.row]
 
-        switch dataManager.elementsList[0].gender {
+        cell.heroImageView.image = heroByIndex.images[0]
+        cell.heroNameLabel.text = heroByIndex.name
+        cell.heroCountryLabel.text = heroByIndex.elements[0].emoji
+        cell.heroQuoteLabel.text = heroByIndex.quotes.first
+
+        switch heroByIndex.gender {
         case .man:
             let subCellView = cell.contentView.subviews[0]
-            let cellView = cell.contentView.subviews[0].subviews[0]
+            subCellView.layer.cornerRadius = 10
+            subCellView.layer.shadowRadius = 10
+            subCellView.layer.shadowOpacity = 1
+            subCellView.layer.shadowOffset = .zero
+            subCellView.layer.shadowColor = UIColor.white.cgColor
+            subCellView.clipsToBounds = false
 
             subCellView.backgroundColor = .white
-            cellView.backgroundColor = UIColor(red: 225/255, green: 1, blue: 1, alpha: 0.5 )
+            subCellView.backgroundColor = UIColor(red: 225/255, green: 1, blue: 1, alpha: 0.5 )
         default:
-            print("Ffff")
             break
         }
-        //        cell.heroNameLabel.text = "Hero"
-        //        cell.heroCountryLabel.text = "🇹🇴"
-        //        cell.heroQuoteLabel.text = "Be Productive!"
         
         return cell
     }
@@ -929,6 +946,105 @@ class HerosCollectionViewController: UICollectionViewController, UICollectionVie
         return 0
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let descriptionViewController = HeroDescriptionViewController()
+        descriptionViewController.image = dataManager.elementsList[indexPath.item].images.last!
+        descriptionViewController.name = dataManager.elementsList[indexPath.item].name
+        descriptionViewController.country = dataManager.elementsList[indexPath.item].elements[0].title
+        descriptionViewController.information = dataManager.elementsList[indexPath.item].information
+        descriptionViewController.quotes = dataManager.elementsList[indexPath.item].quotes
+        
+        print(indexPath.item)
+        showDetailViewController(descriptionViewController, sender: nil)
+        collectionView.deselectItem(at: indexPath, animated: true)
+    }
+    
+}
+
+class HeroDescriptionViewController: UIViewController {
+    
+    var image: UIImage!
+    var name: String!
+    var country: String!
+    var information: String!
+    var quotes: [String]!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        updateUI()
+    }
+    
+    func updateUI() {
+        guard let image = image, let name = name, let country = country, let information = information, let quotes = quotes else {
+            fatalError("Some of hero description properties are nil")
+        }
+        self.view.backgroundColor = .white
+        
+        let imageView = UIImageView()
+        let titleStackView = UIStackView()
+        let quoteStackView = UIStackView()
+        let nameLabel = UILabel()
+        let countryLabel = UILabel()
+        let textView = UITextView()
+        
+        
+        // MARK: Turning off AutoResizing
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        titleStackView.translatesAutoresizingMaskIntoConstraints = false
+        quoteStackView.translatesAutoresizingMaskIntoConstraints = false
+        nameLabel.translatesAutoresizingMaskIntoConstraints = false
+        countryLabel.translatesAutoresizingMaskIntoConstraints = false
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        
+        // MARK: Configuring UI Elements
+        imageView.image = image
+        
+        nameLabel.text = name
+        countryLabel.text = country
+        
+        titleStackView.alignment = .fill
+        titleStackView.axis = .horizontal
+        titleStackView.distribution = .fillEqually
+        titleStackView.addArrangedSubview(nameLabel)
+        titleStackView.addArrangedSubview(countryLabel)
+        
+        textView.text = information
+        textView.isEditable = false
+        
+        for quote in quotes {
+            let quoteLabel = UILabel()
+            quoteLabel.textAlignment = .right
+            quoteLabel.text = quote
+            quoteStackView.addArrangedSubview(quoteLabel)
+        }
+        
+        // MARK: Adding subviews to View
+        view.addSubview(imageView)
+        view.addSubview(titleStackView)
+        view.addSubview(textView)
+        view.addSubview(quoteStackView)
+        
+        // MARK: Configuring Constraits
+        let constraits = [
+            imageView.topAnchor.constraint(equalTo: self.view.topAnchor),
+            imageView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
+            imageView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
+            imageView.heightAnchor.constraint(equalToConstant: 300),
+            titleStackView.topAnchor.constraint(equalTo: imageView.bottomAnchor),
+            titleStackView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
+            titleStackView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
+            textView.topAnchor.constraint(equalTo: titleStackView.bottomAnchor),
+            textView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
+            textView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
+            textView.heightAnchor.constraint(equalToConstant: 100),
+            quoteStackView.topAnchor.constraint(equalTo: textView.bottomAnchor),
+            quoteStackView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
+            quoteStackView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
+            quoteStackView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+        ]
+        
+        NSLayoutConstraint.activate(constraits)
+    }
 }
 
 class HeroCollectionViewCell: UICollectionViewCell {
@@ -954,8 +1070,7 @@ class HeroCollectionViewCell: UICollectionViewCell {
             }
             
         }
-        self.heroNameLabel.adjustsFontSizeToFitWidth = true
-        contentView.addSubview(nibView!)
+        contentView.addSubview(nibView!.subviews.first!)
     }
     
     required init?(coder: NSCoder) {
@@ -1016,8 +1131,8 @@ let master = IntroductionViewController()
 let tableViewContoller = CountryTableViewController()
 let genderViewController = GenderTableViewController()
 let occupationViewController = OccupationTableViewController()
-let collectionViewController = HerosCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
-let navigationContoller = UINavigationController(rootViewController: master)
+let collectionViewController = HeroesCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
+let navigationContoller = UINavigationController(rootViewController: collectionViewController)
 navigationContoller.preferredContentSize = CGSize(width: 350, height: 700)
 PlaygroundPage.current.liveView = navigationContoller
 
