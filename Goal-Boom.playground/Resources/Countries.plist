@@ -4,6 +4,70 @@
 <array>
 	<dict>
 		<key>Region</key>
+		<string>Europe</string>
+		<key>Albania</key>
+		<string>🇦🇱</string>
+		<key>Andorra</key>
+		<string>🇦🇩</string>
+		<key>Belarus</key>
+		<string>🇧🇾</string>
+		<key>Bosnia</key>
+		<string>🇧🇦</string>
+		<key>Croatia</key>
+		<string>🇭🇷</string>
+		<key>Faroe-Islands</key>
+		<string>🇫🇴</string>
+		<key>Gibraltar</key>
+		<string>🇬🇮</string>
+		<key>Guernsey</key>
+		<string>🇬🇬</string>
+		<key>Iceland</key>
+		<string>🇮🇸</string>
+		<key>Jersey</key>
+		<string>🇯🇪</string>
+		<key>Kosovo</key>
+		<string>🇽🇰</string>
+		<key>Liechtenstein</key>
+		<string>🇱🇮</string>
+		<key>Isle-of-Man</key>
+		<string>🇮🇲</string>
+		<key>Moldova</key>
+		<string>🇲🇩</string>
+		<key>Monaco</key>
+		<string>🇲🇨</string>
+		<key>Montenegro</key>
+		<string>🇲🇪</string>
+		<key>North-Macedonia</key>
+		<string>🇲🇰</string>
+		<key>Norway</key>
+		<string>🇳🇴</string>
+		<key>Russia</key>
+		<string>🇷🇺</string>
+		<key>San-Marino</key>
+		<string>🇸🇲</string>
+		<key>Serbia</key>
+		<string>🇷🇸</string>
+		<key>Svalbard&amp;Jan-Mayen</key>
+		<string>🇸🇯</string>
+		<key>Switzerland</key>
+		<string>🇨🇭</string>
+		<key>Turkey</key>
+		<string>🇹🇷</string>
+		<key>Ukraine</key>
+		<string>🇺🇦</string>
+		<key>Vatican-City</key>
+		<string>🇻🇦</string>
+	</dict>
+	<dict>
+		<key>Region</key>
+		<string>North America</string>
+		<key>USA</key>
+		<string>🇺🇸 </string>
+		<key>Canada</key>
+		<string>🇨🇦</string>
+	</dict>
+	<dict>
+		<key>Region</key>
 		<string>Asia</string>
 		<key>Afghanistan</key>
 		<string>🇦🇫 </string>
@@ -76,24 +140,6 @@ Timor-Leste</key>
 		<string>🇺🇿</string>
 		<key>Vietnam</key>
 		<string>🇻🇳</string>
-	</dict>
-	<dict>
-		<key>Region</key>
-		<string>Europe</string>
-		<key>Germany</key>
-		<string>🇩🇪</string>
-		<key>UK</key>
-		<string>🇬🇧</string>
-		<key>France</key>
-		<string>🇫🇷</string>
-	</dict>
-	<dict>
-		<key>Region</key>
-		<string>North America</string>
-		<key>USA</key>
-		<string>🇺🇸 </string>
-		<key>Canada</key>
-		<string>🇨🇦</string>
 	</dict>
 	<dict>
 		<key>Region</key>

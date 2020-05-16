@@ -963,6 +963,7 @@ class HeroesCollectionViewController: UICollectionViewController, UICollectionVi
 
 class HeroDescriptionViewController: UIViewController {
     
+    
     var image: UIImage!
     var name: String!
     var country: String!
