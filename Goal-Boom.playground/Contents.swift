@@ -35,14 +35,12 @@ enum Gender: String, CaseIterable {
 }
 
 enum Occupation: String, CaseIterable {
-    case police = "Police Officer"
     case engineer = "Engineer"
     case entrepreneur = "Entrepreneur"
     case doctor = "Doctor"
     case chef = "Chef"
     case investor = "Investor"
     case singer = "Singer"
-    case teacher = "Teacher"
     case developer = "Developer"
     case lawyer = "Lawyer"
     case inventor = "Inventor"
@@ -108,9 +106,14 @@ class TableDataManger<Item> where Item: BlurCellDataProtocol {
             for (key, value) in data {
                 switch key.lowercased() {
                 case "gender":
-                    if let heroGender = value as? String, heroGender == gender.rawValue {
+                    if gender != .unspecified {
+                        if let heroGender = value as? String, heroGender == gender.rawValue {
+                            checker += 1
+                        }
+                    } else {
                         checker += 1
                     }
+
                 case "jobs":
                     for job in value as! Array<String> {
                         if job == occupation.rawValue.lowercased() {
@@ -136,7 +139,7 @@ class TableDataManger<Item> where Item: BlurCellDataProtocol {
 
 struct HeroItem: BlurCellDataProtocol {
     var name: String
-    var images: [UIImage]
+    var image: UIImage
     var quotes: [String]
     var information: String
     var occupations: [Occupation]
@@ -147,7 +150,7 @@ struct HeroItem: BlurCellDataProtocol {
         self.name = ""
         self.elements = [(emoji: "", title: "")]
         self.quotes = []
-        self.images = []
+        self.image = UIImage()
         self.occupations = []
         self.information = ""
         self.gender = .unspecified
@@ -165,17 +168,15 @@ struct HeroItem: BlurCellDataProtocol {
                     quotes.append(quote)
                 }
             case "Image":
-                if let path = Bundle.main.path(forResource: "HerosPhotos/\(value as! String)@2x", ofType: "png"), let image = UIImage(named: path) {
-                    self.images.append(image)
+                if let path = Bundle.main.path(forResource: "HerosPhotos/\(value as! String)", ofType: "png"), let image = UIImage(named: path) {
+                    self.image = image
+                } else if let path = Bundle.main.path(forResource: "HerosPhotos/\(value as! String)", ofType: "jpg"), let image = UIImage(named: path) {
+                    self.image = image
                 }
-                if let path = Bundle.main.path(forResource: "HerosPhotos/\(value as! String)@3x", ofType: "png"), let image = UIImage(named: path) {
-                    self.images.append(image)
-                }
+                
             case "Jobs":
                 for job in value as! Array<String> {
                     switch job.lowercased() {
-                    case "police":
-                        self.occupations.append(.police)
                     case "engineer":
                         self.occupations.append(.engineer)
                     case "entrepreneur":
@@ -188,8 +189,6 @@ struct HeroItem: BlurCellDataProtocol {
                         self.occupations.append(.inventor)
                     case "singer":
                         self.occupations.append(.singer)
-                    case "teacher":
-                        self.occupations.append(.teacher)
                     case "developer":
                         self.occupations.append(.developer)
                     case "lawyer":
@@ -639,7 +638,6 @@ class GenderTableViewController: UIViewController, UITableViewDataSource, UITabl
         self.tableView?.register(BlurTableViewCell.self, forCellReuseIdentifier: "genderCell")
         
         let gestureRecogniser = UISwipeGestureRecognizer(target: self, action: #selector(userSwiped(_:)))
-        
         self.view.addGestureRecognizer(gestureRecogniser)
         
         let topView = UIView()
@@ -882,6 +880,9 @@ class HeroesCollectionViewController: UICollectionViewController, UICollectionVi
         blurView.frame = self.view.bounds
         blurView.layer.animate(colors: colors, duration: 5.0, sizing: blurView.bounds)
         
+        let gestureRecogniser = UISwipeGestureRecognizer(target: self, action: #selector(userSwiped(_:)))
+        self.view.addGestureRecognizer(gestureRecogniser)
+        
         self.view.addSubview(blurView)
         self.view.sendSubviewToBack(blurView)
         
@@ -904,7 +905,7 @@ class HeroesCollectionViewController: UICollectionViewController, UICollectionVi
         
         let heroByIndex = dataManager.elementsList[indexPath.row]
 
-        cell.heroImageView.image = heroByIndex.images[0]
+        cell.heroImageView.image = heroByIndex.image
         cell.heroNameLabel.text = heroByIndex.name
         cell.heroCountryLabel.text = heroByIndex.elements[0].emoji
         cell.heroQuoteLabel.text = heroByIndex.quotes.first
@@ -948,7 +949,7 @@ class HeroesCollectionViewController: UICollectionViewController, UICollectionVi
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let descriptionViewController = HeroDescriptionViewController()
-        descriptionViewController.image = dataManager.elementsList[indexPath.item].images.last!
+        descriptionViewController.image = dataManager.elementsList[indexPath.item].image
         descriptionViewController.name = dataManager.elementsList[indexPath.item].name
         descriptionViewController.country = dataManager.elementsList[indexPath.item].elements[0].title
         descriptionViewController.information = dataManager.elementsList[indexPath.item].information
@@ -957,6 +958,10 @@ class HeroesCollectionViewController: UICollectionViewController, UICollectionVi
         print(indexPath.item)
         showDetailViewController(descriptionViewController, sender: nil)
         collectionView.deselectItem(at: indexPath, animated: true)
+    }
+    
+    @objc func userSwiped(_ sender: UIGestureRecognizer) {
+        navigationController?.popViewController(animated: true)
     }
     
 }
@@ -1133,7 +1138,7 @@ let tableViewContoller = CountryTableViewController()
 let genderViewController = GenderTableViewController()
 let occupationViewController = OccupationTableViewController()
 let collectionViewController = HeroesCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
-let navigationContoller = UINavigationController(rootViewController: collectionViewController)
+let navigationContoller = UINavigationController(rootViewController: master)
 navigationContoller.preferredContentSize = CGSize(width: 350, height: 700)
 PlaygroundPage.current.liveView = navigationContoller
 

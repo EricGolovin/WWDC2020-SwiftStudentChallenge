@@ -12,7 +12,7 @@
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HeroCollectionViewCell" id="eds-cD-6jL" customClass="HeroCollectionViewCell">
             <rect key="frame" x="0.0" y="0.0" width="150" height="250"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="t4a-mL-RPG">
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="t4a-mL-RPG">
                 <rect key="frame" x="0.0" y="0.0" width="150" height="250"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
@@ -24,7 +24,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quote" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="none" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KAs-ee-yEa">
-                        <rect key="frame" x="16" y="203" width="118" height="40"/>
+                        <rect key="frame" x="16" y="202" width="118" height="40"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="40" id="fcd-Le-5gI"/>
                         </constraints>
@@ -33,29 +33,26 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="lbX-RA-66O">
-                        <rect key="frame" x="16" y="174" width="118" height="21"/>
+                        <rect key="frame" x="16" y="174" width="118" height="20"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sgB-Re-WOd">
-                                <rect key="frame" x="0.0" y="0.0" width="93" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sgB-Re-WOd">
+                                <rect key="frame" x="0.0" y="0.0" width="103" height="20"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" white="0.0" alpha="0.24922410102739725" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <size key="shadowOffset" width="1" height="1"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🌎" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jwd-fd-35v" userLabel="Country">
-                                <rect key="frame" x="93" y="0.0" width="25" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🌎" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jwd-fd-35v" userLabel="Country">
+                                <rect key="frame" x="103" y="0.0" width="15" height="20"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="25" id="TAV-mr-TDy"/>
+                                    <constraint firstAttribute="width" constant="15" id="8Au-QK-EOg"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="21" id="YxF-fQ-SLG"/>
-                        </constraints>
                     </stackView>
                 </subviews>
                 <constraints>

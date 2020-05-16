@@ -3,12 +3,56 @@
 <plist version="1.0">
 <array>
 	<dict>
-		<key>Developer</key>
+		<key>engineer</key>
+		<string>👷‍♀️👷👷‍♂️</string>
+	</dict>
+	<dict>
+		<key>enterpreneur</key>
+		<string>👩‍💼🧑‍💼👨‍💼</string>
+	</dict>
+	<dict>
+		<key>doctor</key>
+		<string>👩‍⚕️🧑‍⚕️👨‍⚕️</string>
+	</dict>
+	<dict>
+		<key>chef</key>
+		<string>👩‍🍳🧑‍🍳👨‍🍳</string>
+	</dict>
+	<dict>
+		<key>investor</key>
+		<string>👱‍♀️👱👱‍♂️</string>
+	</dict>
+	<dict>
+		<key>signer</key>
+		<string>👩‍🎤🧑‍🎤👨‍🎤</string>
+	</dict>
+	<dict>
+		<key>developer</key>
 		<string>👩‍💻🧑‍💻👨‍💻</string>
 	</dict>
 	<dict>
-		<key>Engineer</key>
-		<string>👩‍🏭🧑‍🏭👨‍🏭</string>
+		<key>lawyer</key>
+		<string>👩‍⚖️🧑‍⚖️👨‍⚖️</string>
+	</dict>
+	<dict>
+		<key>inventor</key>
+		<string>👩‍🔧🧑‍🔧👨‍🔧</string>
+	</dict>
+	<dict>
+		<key>scientist</key>
+		<string>👩‍🔬🧑‍🔬👨‍🔬</string>
+	</dict>
+	<dict>
+		<key>artist</key>
+		<string>👩‍🎨🧑‍🎨👨‍🎨</string>
+	</dict>
+	<dict>
+		<key>pilot</key>
+		<string>👩‍✈️🧑‍✈️👨‍✈️</string>
+	</dict>
+	<dict>
+		<key>astronaut</key>
+		<string>👩‍🚀🧑‍🚀👨‍🚀</string>
 	</dict>
 </array>
 </plist>

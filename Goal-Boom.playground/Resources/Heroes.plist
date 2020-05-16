@@ -4,45 +4,219 @@
 <array>
 	<dict>
 		<key>Image</key>
-		<string>ElonMask</string>
+		<string>NikolaTesla</string>
 		<key>Name</key>
-		<string>Elon Mask</string>
+		<string>Nikola Tesla</string>
 		<key>Country</key>
-		<string>South-Africa 🇿🇦 Africa</string>
+		<string>Croatia 🇭🇷 Europe
+🇭🇷</string>
 		<key>Quotes</key>
 		<array>
-			<string>&quot;Human on Mars by 2022!&quot;</string>
-			<string>&quot;Tesla&quot;</string>
+			<string>&quot;The present is theirs; the future, for which I really worked, is mine.&quot;</string>
+			<string>&quot;The day science begins to study non-physical phenomena, it will make more progress in one decade than in all the previous centuries of its existence.&quot;</string>
+			<string>&quot;Our virtues and our failings are inseparable, like force and matter. When they separate, man is no more.&quot;</string>
 		</array>
 		<key>Info</key>
-		<string>Some Info about Elon Musk\n and more</string>
+		<string>Arguably at the top of the list of greatest engineers is Nikola Tesla. He was Serbian, and moved to America at the age of 28 to work with Thomas Edison. Tesla is perhaps one of the most underrated electrical engineers, and didn’t receive credit for a lot of his inventions.
+
+There’s no doubt that he had a huge influence on society, though. His inventions include the induction motor, 3-phase electricity, fluorescent lighting and the Tesla coil. He also developed the AC current generation system made from a transformer and a motor.</string>
 		<key>Jobs</key>
 		<array>
-			<string>investor</string>
-			<string>developer</string>
-			<string>entrepreneur</string>
+			<string>inventor</string>
+			<string>scientist</string>
+			<string>engineer</string>
 		</array>
 		<key>Gender</key>
 		<string>man</string>
 	</dict>
 	<dict>
 		<key>Image</key>
-		<string>CheriSamba</string>
+		<string>ThomasEdison</string>
 		<key>Name</key>
-		<string>Cheri Samba</string>
+		<string>Thomas Edison</string>
 		<key>Country</key>
-		<string>Congo 🇨🇩 Africa</string>
+		<string>Italy 🇮🇹 Europe</string>
 		<key>Quotes</key>
 		<array>
-			<string>&quot;paint&quot;</string>
-			<string>&quot;Tesla&quot;</string>
+			<string>&quot;I have not failed. I&apos;ve just found 10,000 ways that won&apos;t work.&quot;</string>
+			<string>&quot;Genius is one percent inspiration and ninety-nine percent perspiration.&quot;</string>
+			<string>&quot;Our greatest weakness lies in giving up. The most certain way to succeed is always to try just one more time.&quot;</string>
 		</array>
 		<key>Info</key>
-		<string>Some Info about Elon Musk\n and more</string>
+		<string>Thomas Edison was an American inventor and referred to as a great businessman. He holds an astounding 1,097 patents, a record. He goes down as the most prolific inventor in history. A few of his many inventions include the motion picture camera and projector, the phonograph, and the incandescent lightbulb. Can you imagine life without the lightbulb?</string>
 		<key>Jobs</key>
 		<array>
-			<string>developer</string>
+			<string>inventor</string>
+			<string>scientist</string>
+			<string>engineer</string>
+		</array>
+		<key>Gender</key>
+		<string>man</string>
+	</dict>
+	<dict>
+		<key>Image</key>
+		<string>HenryFord</string>
+		<key>Name</key>
+		<string>Henry Ford</string>
+		<key>Country</key>
+		<string>USA 🇺🇸 NorthAmerica</string>
+		<key>Quotes</key>
+		<array>
+			<string>&quot;Coming together is a beginning, staying together is progress, and working together is success.&quot;</string>
+			<string>&quot;If you think you can do a thing or think you can&apos;t do a thing, you&apos;re right.&quot;</string>
+			<string>&quot;Failure is simply the opportunity to begin again, this time more intelligently.&quot;</string>
+		</array>
+		<key>Info</key>
+		<string>Henry Ford was an engineer and industrialist who founded the Ford Motor Company. The rest is history. Although not the inventor of the modern car, he developed assembly and production lines that brought about mass production – resulting in the first motor car that an average person could afford. As a result, he turned the automobile into something of a necessity rather than just a thing of curiosity.</string>
+		<key>Jobs</key>
+		<array>
+			<string>inventor</string>
+			<string>scientist</string>
+			<string>engineer</string>
+			<string>enterpreneur</string>
+		</array>
+		<key>Gender</key>
+		<string>man</string>
+	</dict>
+	<dict>
+		<key>Image</key>
+		<string>Archimedes</string>
+		<key>Name</key>
+		<string>Archimedes</string>
+		<key>Country</key>
+		<string>Italy 🇮🇹 Europe</string>
+		<key>Quotes</key>
+		<array>
+			<string>&quot;Give me a place to stand and I will move the earth.&quot;</string>
+			<string>&quot;Don&apos;t disturb my circles!&quot;</string>
+			<string>&quot;He who knows how to speak, knows also when.&quot;</string>
+		</array>
+		<key>Info</key>
+		<string>A classic scientist in the making, Archimedes was a Greek engineer, mathematician, physicist and astronomer. He has had a lasting influence in these areas, and although very little is known about the man himself, his inventions have stood the test of time and laid the foundations for many modern designs. The Archimedes screw, which can raise water efficiently, is undoubtedly the most famous.</string>
+		<key>Jobs</key>
+		<array>
+			<string>inventor</string>
+			<string>scientist</string>
+			<string>engineer</string>
+		</array>
+		<key>Gender</key>
+		<string>man</string>
+	</dict>
+	<dict>
+		<key>Image</key>
+		<string>NikolausOtto</string>
+		<key>Name</key>
+		<string>Nikolaus Otto</string>
+		<key>Country</key>
+		<string>Germany 🇩🇪 Europe</string>
+		<key>Quotes</key>
+		<array>
+			<string>-</string>
+		</array>
+		<key>Info</key>
+		<string>A German inventor, Nikolaus Otto is credited with the development of the four stroke engine. Also referred to as the Otto-cycle engine, his invention helped to initiate the development of motor cars. The same four steps of drawing in fuel and air, compressing the mixture then igniting it, and finally expelling through the exhaust is still the basis for our modern day combustion engines.</string>
+		<key>Jobs</key>
+		<array>
+			<string>inventor</string>
+			<string>scientist</string>
+			<string>engineer</string>
+			<string>enterpreneur</string>
+		</array>
+		<key>Gender</key>
+		<string>man</string>
+	</dict>
+	<dict>
+		<key>Image</key>
+		<string>LeonardodaVinci</string>
+		<key>Name</key>
+		<string>Leonardo da Vinci</string>
+		<key>Country</key>
+		<string>Italy 🇮🇹 Europe</string>
+		<key>Quotes</key>
+		<array>
+			<string>&quot;Simplicity is the ultimate sophistication.&quot;</string>
+			<string>&quot;Art is never finished, only abandoned.&quot;</string>
+			<string>&quot;Learning never exhausts the mind.&quot;</string>
+		</array>
+		<key>Info</key>
+		<string>Most famous for his painting, Da Vinci was actually ahead of his time when it came to engineering. You might be surprised to know that his technological ingenuity was right up there as one of the best. Although relatively few of his ideas were feasible at the time because of the limits in engineering, he conceptualised many inventions from flying machines, like the modern day helicopter, to concentrated solar power.</string>
+		<key>Jobs</key>
+		<array>
+			<string>inventor</string>
+			<string>scientist</string>
+			<string>engineer</string>
 			<string>artist</string>
+		</array>
+		<key>Gender</key>
+		<string>man</string>
+	</dict>
+	<dict>
+		<key>Image</key>
+		<string>WrightBrothers</string>
+		<key>Name</key>
+		<string>Wright Brothers</string>
+		<key>Country</key>
+		<string>USA 🇺🇸 NorthAmerica</string>
+		<key>Quotes</key>
+		<array>
+			<string>&quot;The airplane stays up because it doesn&apos;t have the time to fall.&quot;</string>
+			<string>&quot;No flying machine will ever fly from New York to Paris…[because] no known motor can run at the requisite speed for four days without stopping.&quot;</string>
+			<string>&quot;If birds can glide for long periods of time, then… why can&apos;t I?&quot;</string>
+		</array>
+		<key>Info</key>
+		<string>Ok, so technically there are two people here, but for the sake of this list we&apos;ll count them as one. The brothers were responsible for creating the airplane. Originally bike mechanics, their love of kite-flying and curiosity led them to new heights. Initial prototypes did not stay in the air for long, but the brothers worked tirelessly to develop a pulley system to change the shape of the wing during flight, giving the plane more stability – changing the world we live in today.</string>
+		<key>Jobs</key>
+		<array>
+			<string>inventor</string>
+			<string>scientist</string>
+			<string>engineer</string>
+		</array>
+		<key>Gender</key>
+		<string>man</string>
+	</dict>
+	<dict>
+		<key>Image</key>
+		<string>AlexanderGrahamBell</string>
+		<key>Name</key>
+		<string>Alexander Graham Bell</string>
+		<key>Country</key>
+		<string>UK 🇬🇧 Europe</string>
+		<key>Quotes</key>
+		<array>
+			<string>&quot;Mr. Watson — Come here — I want to see you.&quot;</string>
+			<string>&quot;When one door closes another door opens; but we so often look so long and so regretfully upon the closed door, that we do not see the ones which open for us.&quot;</string>
+			<string>&quot;Before anything else, preparation is the key to success.&quot;</string>
+		</array>
+		<key>Info</key>
+		<string>A Scottish born engineer, scientist and inventor, Alexander Graham Bell is credited with providing us with the first telephone. His work was strongly influenced by the fact that unusually both his mother and wife were deaf. This led him to focus on the areas of elocution and speech, and eventually experimenting with hearing devices. The first U.S. patent for the telephone was awarded to him way back in 1876. He also had many other inventions in later life, including in aeronautics and optical telecommunications.</string>
+		<key>Jobs</key>
+		<array>
+			<string>inventor</string>
+			<string>scientist</string>
+			<string>engineer</string>
+		</array>
+		<key>Gender</key>
+		<string>man</string>
+	</dict>
+	<dict>
+		<key>Image</key>
+		<string>GeorgeStephenson</string>
+		<key>Name</key>
+		<string>George Stephenson</string>
+		<key>Country</key>
+		<string>UK 🇬🇧 Europe</string>
+		<key>Quotes</key>
+		<array>
+			<string>&quot;The rage for railroads is so great that many will be laid in parts where they will not pay.&quot;</string>
+			<string>&quot;I am glad to learn that the Parliament Bill has been passed for the Darlington Railway.&quot;</string>
+		</array>
+		<key>Info</key>
+		<string>George Stephenson was a civil and mechanical engineer who developed and built steam locomotives for some of the first ever railways. Because of his impact, he is sometimes referred to as &apos;the Father of the Railway&apos;. He lived during the industrial revolution in Britain, and at the time of his passing in 1848, its railways and factories resulted in it being one of the world’s richest countries. George’s son Robert helped his father build railways and became equally as famous in his own right.</string>
+		<key>Jobs</key>
+		<array>
+			<string>inventor</string>
+			<string>scientist</string>
+			<string>engineer</string>
 		</array>
 		<key>Gender</key>
 		<string>man</string>

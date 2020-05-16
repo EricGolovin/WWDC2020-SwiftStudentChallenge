@@ -68,81 +68,6 @@
 	</dict>
 	<dict>
 		<key>Region</key>
-		<string>Asia</string>
-		<key>Afghanistan</key>
-		<string>🇦🇫 </string>
-		<key>Armenia</key>
-		<string>🇦🇲</string>
-		<key>Azerbaijan</key>
-		<string>🇦🇿</string>
-		<key>Bangladesh</key>
-		<string>🇧🇩</string>
-		<key>Bhutan</key>
-		<string>🇧🇹</string>
-		<key>Brunei</key>
-		<string>🇧🇳</string>
-		<key>Cambodia</key>
-		<string>🇰🇭</string>
-		<key>China</key>
-		<string>🇨🇳</string>
-		<key>Georgia</key>
-		<string>🇬🇪</string>
-		<key>Hong Kong</key>
-		<string>🇭🇰</string>
-		<key>India</key>
-		<string>🇮🇳</string>
-		<key>Indonesia</key>
-		<string>🇮🇩</string>
-		<key>Japan</key>
-		<string>🇯🇵</string>
-		<key>Kazakhstan</key>
-		<string>🇰🇿</string>
-		<key>North Korea</key>
-		<string>🇰🇵</string>
-		<key>South Korea</key>
-		<string>🇰🇷</string>
-		<key>Kyrgyzstan</key>
-		<string>🇰🇬</string>
-		<key>Laos</key>
-		<string>🇱🇦</string>
-		<key>Macao</key>
-		<string>🇲🇴</string>
-		<key>Malaysia</key>
-		<string>🇲🇾</string>
-		<key>Maldives</key>
-		<string>🇲🇻</string>
-		<key>Mongolia</key>
-		<string>🇲🇳</string>
-		<key>Myanmar (Burma)</key>
-		<string>🇲🇲</string>
-		<key>Nepal</key>
-		<string>🇳🇵</string>
-		<key>Pakistan</key>
-		<string>🇵🇰</string>
-		<key>Philippines</key>
-		<string>🇵🇭</string>
-		<key>Singapore</key>
-		<string>🇸🇬</string>
-		<key>Sri Lanka</key>
-		<string>🇱🇰</string>
-		<key>Taiwan</key>
-		<string>🇹🇼</string>
-		<key>Tajikistan</key>
-		<string>🇹🇯</string>
-		<key>Thailand</key>
-		<string>🇹🇭</string>
-		<key>Timor-Leste
-Timor-Leste</key>
-		<string>🇹🇱</string>
-		<key>Turkmenistan</key>
-		<string>🇹🇲</string>
-		<key>Uzbekistan</key>
-		<string>🇺🇿</string>
-		<key>Vietnam</key>
-		<string>🇻🇳</string>
-	</dict>
-	<dict>
-		<key>Region</key>
 		<string>Africa</string>
 		<key>Burundi</key>
 		<string>🇧🇮</string>
@@ -260,6 +185,109 @@ Timor-Leste</key>
 		<string>🇸🇱</string>
 		<key>Togo</key>
 		<string>🇹🇬</string>
+	</dict>
+	<dict>
+		<key>Region</key>
+		<string>Asia</string>
+		<key>Afghanistan</key>
+		<string>🇦🇫 </string>
+		<key>Armenia</key>
+		<string>🇦🇲</string>
+		<key>Azerbaijan</key>
+		<string>🇦🇿</string>
+		<key>Bangladesh</key>
+		<string>🇧🇩</string>
+		<key>Bhutan</key>
+		<string>🇧🇹</string>
+		<key>Brunei</key>
+		<string>🇧🇳</string>
+		<key>Cambodia</key>
+		<string>🇰🇭</string>
+		<key>China</key>
+		<string>🇨🇳</string>
+		<key>Georgia</key>
+		<string>🇬🇪</string>
+		<key>Hong Kong</key>
+		<string>🇭🇰</string>
+		<key>India</key>
+		<string>🇮🇳</string>
+		<key>Indonesia</key>
+		<string>🇮🇩</string>
+		<key>Japan</key>
+		<string>🇯🇵</string>
+		<key>Kazakhstan</key>
+		<string>🇰🇿</string>
+		<key>North Korea</key>
+		<string>🇰🇵</string>
+		<key>South Korea</key>
+		<string>🇰🇷</string>
+		<key>Kyrgyzstan</key>
+		<string>🇰🇬</string>
+		<key>Laos</key>
+		<string>🇱🇦</string>
+		<key>Macao</key>
+		<string>🇲🇴</string>
+		<key>Malaysia</key>
+		<string>🇲🇾</string>
+		<key>Maldives</key>
+		<string>🇲🇻</string>
+		<key>Mongolia</key>
+		<string>🇲🇳</string>
+		<key>Myanmar (Burma)</key>
+		<string>🇲🇲</string>
+		<key>Nepal</key>
+		<string>🇳🇵</string>
+		<key>Pakistan</key>
+		<string>🇵🇰</string>
+		<key>Philippines</key>
+		<string>🇵🇭</string>
+		<key>Singapore</key>
+		<string>🇸🇬</string>
+		<key>Sri Lanka</key>
+		<string>🇱🇰</string>
+		<key>Taiwan</key>
+		<string>🇹🇼</string>
+		<key>Tajikistan</key>
+		<string>🇹🇯</string>
+		<key>Thailand</key>
+		<string>🇹🇭</string>
+		<key>Timor-Leste
+Timor-Leste</key>
+		<string>🇹🇱</string>
+		<key>Turkmenistan</key>
+		<string>🇹🇲</string>
+		<key>Uzbekistan</key>
+		<string>🇺🇿</string>
+		<key>Vietnam</key>
+		<string>🇻🇳</string>
+		<key>Bahrain</key>
+		<string>🇧🇭</string>
+		<key>Iraq</key>
+		<string>🇮🇶</string>
+		<key>Iran</key>
+		<string>🇮🇷</string>
+		<key>Israel</key>
+		<string>🇮🇱</string>
+		<key>Jordan</key>
+		<string>🇯🇴</string>
+		<key>Kuwait</key>
+		<string>🇰🇼</string>
+		<key>Lebanon</key>
+		<string>🇱🇧</string>
+		<key>Oman</key>
+		<string>🇴🇲</string>
+		<key>Palestine</key>
+		<string>🇵🇸</string>
+		<key>Qatar</key>
+		<string>🇶🇦</string>
+		<key>Saudi Arabia</key>
+		<string>🇸🇦</string>
+		<key>Syria</key>
+		<string>🇸🇾</string>
+		<key>United-Arab-Emirates</key>
+		<string>🇦🇪</string>
+		<key>Yemen</key>
+		<string>🇾🇪</string>
 	</dict>
 </array>
 </plist>
