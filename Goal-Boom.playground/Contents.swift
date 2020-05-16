@@ -902,7 +902,7 @@ class HeroesCollectionViewController: UICollectionViewController, UICollectionVi
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "heroCell", for: indexPath) as! HeroCollectionViewCell
-        
+        let subCellView = cell.contentView.subviews[0]
         let heroByIndex = dataManager.elementsList[indexPath.row]
 
         cell.heroImageView.image = heroByIndex.image
@@ -910,20 +910,21 @@ class HeroesCollectionViewController: UICollectionViewController, UICollectionVi
         cell.heroCountryLabel.text = heroByIndex.elements[0].emoji
         cell.heroQuoteLabel.text = heroByIndex.quotes.first
 
+        
+        subCellView.layer.cornerRadius = 10
+        subCellView.layer.shadowRadius = 10
+        subCellView.layer.shadowOpacity = 1
+        subCellView.layer.shadowOffset = .zero
+        subCellView.layer.shadowColor = UIColor.white.cgColor
+        
+        subCellView.clipsToBounds = false
         switch heroByIndex.gender {
         case .man:
-            let subCellView = cell.contentView.subviews[0]
-            subCellView.layer.cornerRadius = 10
-            subCellView.layer.shadowRadius = 10
-            subCellView.layer.shadowOpacity = 1
-            subCellView.layer.shadowOffset = .zero
-            subCellView.layer.shadowColor = UIColor.white.cgColor
-            subCellView.clipsToBounds = false
-
-            subCellView.backgroundColor = .white
-            subCellView.backgroundColor = UIColor(red: 225/255, green: 1, blue: 1, alpha: 0.5 )
+            subCellView.backgroundColor = UIColor(red: 225/255, green: 1, blue: 1, alpha: 0.5)
+        case .woman:
+            subCellView.backgroundColor = UIColor(red: 238/255, green: 130/255, blue: 238/255, alpha: 0.5)
         default:
-            break
+            subCellView.backgroundColor = UIColor(red: 144/255, green: 238/255, blue: 144/255, alpha: 0.5)
         }
         
         return cell
