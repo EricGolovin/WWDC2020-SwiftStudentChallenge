@@ -592,7 +592,6 @@ class CountryTableViewController: UIViewController, UITableViewDataSource, UITab
                 tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0),
                 tableView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 0),
                 questionLabel.topAnchor.constraint(equalTo: topView.topAnchor, constant: 40),
-                //                questionLabel.rightAnchor.constraint(equalTo: topView.rightAnchor, constant: 0),
                 questionLabel.bottomAnchor.constraint(equalTo: topView.bottomAnchor, constant: -5),
                 questionLabel.leftAnchor.constraint(equalTo: topView.leftAnchor, constant: 20),
             ]
@@ -946,10 +945,6 @@ class HeroesCollectionViewController: UICollectionViewController, UICollectionVi
         
         self.view.addSubview(blurView)
         self.view.sendSubviewToBack(blurView)
-        
-//        self.view.layer.animate(colors: [UIColor.yellow.cgColor, UIColor.blue.cgColor, UIColor.green.cgColor, UIColor.purple.cgColor], duration: 2.0, sizing: self.view.bounds)
-//        self.view.backgroundColor = .green
-        
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -980,14 +975,6 @@ class HeroesCollectionViewController: UICollectionViewController, UICollectionVi
         
         subCellView.clipsToBounds = false
         subCellView.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.6)
-//        switch heroByIndex.gender {
-//        case .man:
-//            subCellView.backgroundColor = UIColor(red: 225/255, green: 1, blue: 1, alpha: 0.5)
-//        case .woman:
-//            subCellView.backgroundColor = UIColor(red: 238/255, green: 130/255, blue: 238/255, alpha: 0.5)
-//        default:
-//            subCellView.backgroundColor = UIColor(red: 144/255, green: 238/255, blue: 144/255, alpha: 0.5)
-//        }
         
         return cell
     }
@@ -1128,56 +1115,6 @@ class HeroDescriptionViewController: UIViewController {
         NSLayoutConstraint.activate(constraits)
     }
 }
-
-//class HeroDescriptionViewController: UIViewController {
-//
-//    var image: UIImage!
-//    var name: String!
-//    var country: String!
-//    var information: String!
-//    var quotes: [String]!
-//
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//
-//        updateUI()
-//    }
-//
-//    func updateUI() {
-//        let nibFile = UINib(nibName: "DetailView", bundle: .main)
-//        let nibView = nibFile.instantiate(withOwner: self, options: .none).first! as? UIView
-//
-//        for view in nibView!.subviews {
-//            if let imageView = view as? UIImageView {
-//                imageView.image = self.image
-//            } else if let nameLabel = view as? UILabel, nameLabel.tag == 100 {
-//                nameLabel.text = name
-//            } else if let countryLabel = view as? UILabel, countryLabel.tag == 200 {
-//                countryLabel.text = country
-//            } else if let infoTextView = view as? UITextView {
-//                infoTextView.text = information
-//            } else if let quotesStackView = view as? UIStackView {
-//                for (index, quote) in quotes.enumerated() {
-//                    (quotesStackView.arrangedSubviews[index] as! UILabel).text = quote
-//                }
-//            }
-//        }
-//        nibView?.bounds = self.view.frame
-//        nibView?.backgroundColor = .black
-//        if let nibView = nibView {
-//            self.view.addSubview(nibView)
-//        }
-//
-//        let constaints = [
-//            nibView!.topAnchor.constraint(equalTo: self.view.topAnchor),
-//            nibView!.rightAnchor.constraint(equalTo: self.view.rightAnchor),
-//            nibView!.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-//            nibView!.leftAnchor.constraint(equalTo: self.view.leftAnchor),
-//        ]
-//
-//        NSLayoutConstraint.activate(constaints)
-//    }
-//}
 
 class HeroCollectionViewCell: UICollectionViewCell {
     var heroImageView: UIImageView!
@@ -1359,8 +1296,3 @@ extension String {
         }
     }
 }
-
-
-
-
-
