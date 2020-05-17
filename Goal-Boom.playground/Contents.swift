@@ -77,6 +77,9 @@ class TableDataManger<Item> where Item: BlurCellDataProtocol {
         for data in DataManager.loadPlist(name: "Countries") {
             elements.append(RegionItem(data as! [String: String]) as! Item)
         }
+        if Item.self is RegionItem.Type {
+            elements.sort { ($0 as? RegionItem)!.regionName < ($1 as? RegionItem)!.regionName }
+        }
     }
     
     func fetchGenders() {
@@ -139,7 +142,7 @@ class TableDataManger<Item> where Item: BlurCellDataProtocol {
 
 struct HeroItem: BlurCellDataProtocol {
     var name: String
-    var image: UIImage
+    var image: (small: UIImage, large: UIImage)
     var quotes: [String]
     var information: String
     var occupations: [Occupation]
@@ -150,7 +153,7 @@ struct HeroItem: BlurCellDataProtocol {
         self.name = ""
         self.elements = [(emoji: "", title: "")]
         self.quotes = []
-        self.image = UIImage()
+        self.image = (small: UIImage(), large: UIImage())
         self.occupations = []
         self.information = ""
         self.gender = .unspecified
@@ -168,12 +171,17 @@ struct HeroItem: BlurCellDataProtocol {
                     quotes.append(quote)
                 }
             case "Image":
-                if let path = Bundle.main.path(forResource: "HerosPhotos/\(value as! String)", ofType: "png"), let image = UIImage(named: path) {
-                    self.image = image
-                } else if let path = Bundle.main.path(forResource: "HerosPhotos/\(value as! String)", ofType: "jpg"), let image = UIImage(named: path) {
-                    self.image = image
+                if let path = Bundle.main.path(forResource: "HerosPhotos/\(value as! String)@2x", ofType: "png"), let image = UIImage(named: path) {
+                    self.image.small = image
+                } else if let path = Bundle.main.path(forResource: "HerosPhotos/\(value as! String)@2x", ofType: "jpg"), let image = UIImage(named: path) {
+                    self.image.small = image
                 }
                 
+                if let path = Bundle.main.path(forResource: "HerosPhotos/\(value as! String)@3x", ofType: "png"), let image = UIImage(named: path) {
+                    self.image.large = image
+                } else if let path = Bundle.main.path(forResource: "HerosPhotos/\(value as! String)@3x", ofType: "jpg"), let image = UIImage(named: path) {
+                    self.image.large = image
+                }
             case "Jobs":
                 for job in value as! Array<String> {
                     switch job.lowercased() {
@@ -866,11 +874,30 @@ class HeroesCollectionViewController: UICollectionViewController, UICollectionVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.collectionView.register(HeroCollectionViewCell.self, forCellWithReuseIdentifier: "heroCell")
         if let user = user {
             self.dataManager = TableDataManger<HeroItem>(gender: user.gender, occupation: user.occupation, country: user.region.regionName)
         } else {
             self.dataManager = TableDataManger<HeroItem>(gender: .man, occupation: .developer, country: "Africa")
+        }
+        
+        if self.dataManager.elementsList.count == 0 {
+            let alertNavigateController = UIAlertController(title: "You can see found Heroes!", message: "Swipe Right to navigate to Europe -> Unspecified -> Inventors", preferredStyle: .actionSheet)
+            let alertNavigateAction = UIAlertAction(title: "Dismiss", style: .cancel, handler: { _ in
+                self.navigationController?.popViewController(animated: true)
+            })
+            alertNavigateController.addAction(alertNavigateAction)
+            
+            let alertContoller = UIAlertController(title: "No Heroes found in this section", message: "We are still searching. You can become first of them!", preferredStyle: .alert)
+            let alertAction = UIAlertAction(title: "Dismiss", style: .cancel, handler: { _ in
+                self.present(alertNavigateController, animated: true, completion: nil)
+            })
+            
+
+            alertContoller.addAction(alertAction)
+            
+            present(alertContoller, animated: true, completion: nil)
         }
         
         collectionView.backgroundColor = .clear
@@ -905,27 +932,28 @@ class HeroesCollectionViewController: UICollectionViewController, UICollectionVi
         let subCellView = cell.contentView.subviews[0]
         let heroByIndex = dataManager.elementsList[indexPath.row]
 
-        cell.heroImageView.image = heroByIndex.image
+        cell.heroImageView.image = heroByIndex.image.small
         cell.heroNameLabel.text = heroByIndex.name
         cell.heroCountryLabel.text = heroByIndex.elements[0].emoji
         cell.heroQuoteLabel.text = heroByIndex.quotes.first
 
         
         subCellView.layer.cornerRadius = 10
-        subCellView.layer.shadowRadius = 10
+        subCellView.layer.shadowRadius = 5
         subCellView.layer.shadowOpacity = 1
         subCellView.layer.shadowOffset = .zero
         subCellView.layer.shadowColor = UIColor.white.cgColor
         
         subCellView.clipsToBounds = false
-        switch heroByIndex.gender {
-        case .man:
-            subCellView.backgroundColor = UIColor(red: 225/255, green: 1, blue: 1, alpha: 0.5)
-        case .woman:
-            subCellView.backgroundColor = UIColor(red: 238/255, green: 130/255, blue: 238/255, alpha: 0.5)
-        default:
-            subCellView.backgroundColor = UIColor(red: 144/255, green: 238/255, blue: 144/255, alpha: 0.5)
-        }
+        subCellView.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.6)
+//        switch heroByIndex.gender {
+//        case .man:
+//            subCellView.backgroundColor = UIColor(red: 225/255, green: 1, blue: 1, alpha: 0.5)
+//        case .woman:
+//            subCellView.backgroundColor = UIColor(red: 238/255, green: 130/255, blue: 238/255, alpha: 0.5)
+//        default:
+//            subCellView.backgroundColor = UIColor(red: 144/255, green: 238/255, blue: 144/255, alpha: 0.5)
+//        }
         
         return cell
     }
@@ -936,11 +964,11 @@ class HeroesCollectionViewController: UICollectionViewController, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 20, left: 15, bottom: 0, right: 15)
+        return UIEdgeInsets(top: 20, left: 15, bottom: 20, right: 15)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 20
+        return 40
         
     }
     
@@ -950,9 +978,9 @@ class HeroesCollectionViewController: UICollectionViewController, UICollectionVi
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let descriptionViewController = HeroDescriptionViewController()
-        descriptionViewController.image = dataManager.elementsList[indexPath.item].image
+        descriptionViewController.image = dataManager.elementsList[indexPath.item].image.large
         descriptionViewController.name = dataManager.elementsList[indexPath.item].name
-        descriptionViewController.country = dataManager.elementsList[indexPath.item].elements[0].title
+        descriptionViewController.country = dataManager.elementsList[indexPath.item].elements[0].title + " \(dataManager.elementsList[indexPath.item].elements[0].emoji)"
         descriptionViewController.information = dataManager.elementsList[indexPath.item].information
         descriptionViewController.quotes = dataManager.elementsList[indexPath.item].quotes
         
@@ -968,91 +996,154 @@ class HeroesCollectionViewController: UICollectionViewController, UICollectionVi
 }
 
 class HeroDescriptionViewController: UIViewController {
-    
-    
+
     var image: UIImage!
     var name: String!
     var country: String!
     var information: String!
     var quotes: [String]!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUI()
     }
-    
+
     func updateUI() {
         guard let image = image, let name = name, let country = country, let information = information, let quotes = quotes else {
             fatalError("Some of hero description properties are nil")
         }
         self.view.backgroundColor = .white
-        
+
         let imageView = UIImageView()
-        let titleStackView = UIStackView()
-        let quoteStackView = UIStackView()
         let nameLabel = UILabel()
         let countryLabel = UILabel()
         let textView = UITextView()
-        
-        
+        let quoteStackView = UIStackView()
+
+
         // MARK: Turning off AutoResizing
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        titleStackView.translatesAutoresizingMaskIntoConstraints = false
         quoteStackView.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         countryLabel.translatesAutoresizingMaskIntoConstraints = false
         textView.translatesAutoresizingMaskIntoConstraints = false
-        
+
         // MARK: Configuring UI Elements
         imageView.image = image
-        
+        imageView.contentMode = .scaleAspectFit
+
         nameLabel.text = name
+        nameLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 20)
         countryLabel.text = country
-        
-        titleStackView.alignment = .fill
-        titleStackView.axis = .horizontal
-        titleStackView.distribution = .fillEqually
-        titleStackView.addArrangedSubview(nameLabel)
-        titleStackView.addArrangedSubview(countryLabel)
-        
+        countryLabel.font = UIFont(name: "HelveticaNeue", size: 16)
+
         textView.text = information
         textView.isEditable = false
+        textView.font = UIFont(name: "HelveticaNeue", size: 14)
         
+        quoteStackView.spacing = 8
+        quoteStackView.alignment = .trailing
+        quoteStackView.distribution = .fillEqually
+        quoteStackView.axis = .vertical
+
         for quote in quotes {
             let quoteLabel = UILabel()
             quoteLabel.textAlignment = .right
             quoteLabel.text = quote
+            quoteLabel.font = UIFont(name: "HelveticaNeue-Italic", size: 12)
+            quoteLabel.numberOfLines = 2
+            quoteLabel.textColor = .gray
             quoteStackView.addArrangedSubview(quoteLabel)
         }
-        
+
         // MARK: Adding subviews to View
         view.addSubview(imageView)
-        view.addSubview(titleStackView)
+        view.addSubview(nameLabel)
+        view.addSubview(countryLabel)
         view.addSubview(textView)
         view.addSubview(quoteStackView)
-        
+
         // MARK: Configuring Constraits
         let constraits = [
-            imageView.topAnchor.constraint(equalTo: self.view.topAnchor),
-            imageView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
-            imageView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
+            imageView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 8),
+            imageView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -20),
+            imageView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 20),
             imageView.heightAnchor.constraint(equalToConstant: 300),
-            titleStackView.topAnchor.constraint(equalTo: imageView.bottomAnchor),
-            titleStackView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
-            titleStackView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
-            textView.topAnchor.constraint(equalTo: titleStackView.bottomAnchor),
-            textView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
-            textView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
-            textView.heightAnchor.constraint(equalToConstant: 100),
+            
+            nameLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 8),
+            nameLabel.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -20),
+            nameLabel.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 20),
+            nameLabel.heightAnchor.constraint(equalToConstant: 22),
+            
+            countryLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 8),
+            countryLabel.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -20),
+            countryLabel.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 20),
+            countryLabel.heightAnchor.constraint(equalToConstant: 18),
+            
+            textView.topAnchor.constraint(equalTo: countryLabel.bottomAnchor, constant: 8),
+            textView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -20),
+            textView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 20),
+            textView.heightAnchor.constraint(equalToConstant: 200),
+            
             quoteStackView.topAnchor.constraint(equalTo: textView.bottomAnchor),
-            quoteStackView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
-            quoteStackView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
-            quoteStackView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            quoteStackView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -20),
+            quoteStackView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 20),
+            quoteStackView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -20),
         ]
-        
+
         NSLayoutConstraint.activate(constraits)
     }
 }
+
+//class HeroDescriptionViewController: UIViewController {
+//
+//    var image: UIImage!
+//    var name: String!
+//    var country: String!
+//    var information: String!
+//    var quotes: [String]!
+//
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//
+//        updateUI()
+//    }
+//
+//    func updateUI() {
+//        let nibFile = UINib(nibName: "DetailView", bundle: .main)
+//        let nibView = nibFile.instantiate(withOwner: self, options: .none).first! as? UIView
+//
+//        for view in nibView!.subviews {
+//            if let imageView = view as? UIImageView {
+//                imageView.image = self.image
+//            } else if let nameLabel = view as? UILabel, nameLabel.tag == 100 {
+//                nameLabel.text = name
+//            } else if let countryLabel = view as? UILabel, countryLabel.tag == 200 {
+//                countryLabel.text = country
+//            } else if let infoTextView = view as? UITextView {
+//                infoTextView.text = information
+//            } else if let quotesStackView = view as? UIStackView {
+//                for (index, quote) in quotes.enumerated() {
+//                    (quotesStackView.arrangedSubviews[index] as! UILabel).text = quote
+//                }
+//            }
+//        }
+//        nibView?.bounds = self.view.frame
+//        nibView?.backgroundColor = .black
+//        if let nibView = nibView {
+//            self.view.addSubview(nibView)
+//        }
+//
+//        let constaints = [
+//            nibView!.topAnchor.constraint(equalTo: self.view.topAnchor),
+//            nibView!.rightAnchor.constraint(equalTo: self.view.rightAnchor),
+//            nibView!.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+//            nibView!.leftAnchor.constraint(equalTo: self.view.leftAnchor),
+//        ]
+//
+//        NSLayoutConstraint.activate(constaints)
+//    }
+//}
 
 class HeroCollectionViewCell: UICollectionViewCell {
     var heroImageView: UIImageView!

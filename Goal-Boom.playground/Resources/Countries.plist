@@ -57,14 +57,60 @@
 		<string>🇺🇦</string>
 		<key>Vatican-City</key>
 		<string>🇻🇦</string>
-	</dict>
-	<dict>
-		<key>Region</key>
-		<string>America</string>
-		<key>USA</key>
-		<string>🇺🇸 </string>
-		<key>Canada</key>
-		<string>🇨🇦</string>
+		<key>Austria</key>
+		<string>🇦🇹</string>
+		<key>Belgium</key>
+		<string>🇧🇪</string>
+		<key>Bulgaria</key>
+		<string>🇧🇬</string>
+		<key>Cyprus</key>
+		<string>🇨🇾</string>
+		<key>Czechia</key>
+		<string>🇨🇿</string>
+		<key>Denmark</key>
+		<string>🇩🇰</string>
+		<key>Estonia</key>
+		<string>🇪🇪</string>
+		<key>Finland</key>
+		<string>🇫🇮</string>
+		<key>France</key>
+		<string>🇫🇷</string>
+		<key>Germany</key>
+		<string>🇩🇪</string>
+		<key>Greece</key>
+		<string>🇬🇷</string>
+		<key>Hungary</key>
+		<string>🇭🇺</string>
+		<key>Ireland</key>
+		<string>🇮🇪</string>
+		<key>Italy</key>
+		<string>🇮🇹</string>
+		<key>Latvia</key>
+		<string>🇱🇻</string>
+		<key>Lithuania</key>
+		<string>🇱🇹</string>
+		<key>Luxembourg</key>
+		<string>🇱🇺</string>
+		<key>Malta</key>
+		<string>🇲🇹</string>
+		<key>Netherlands</key>
+		<string>🇳🇱</string>
+		<key>Poland</key>
+		<string>🇵🇱</string>
+		<key>Portugal</key>
+		<string>🇵🇹</string>
+		<key>Romania</key>
+		<string>🇷🇴</string>
+		<key>Slovakia</key>
+		<string>🇸🇰</string>
+		<key>Slovenia</key>
+		<string>🇸🇮</string>
+		<key>Spain</key>
+		<string>🇪🇸</string>
+		<key>Sweden</key>
+		<string>🇸🇪</string>
+		<key>United-Kingdom</key>
+		<string>🇬🇧</string>
 	</dict>
 	<dict>
 		<key>Region</key>
@@ -288,6 +334,14 @@ Timor-Leste</key>
 		<string>🇦🇪</string>
 		<key>Yemen</key>
 		<string>🇾🇪</string>
+	</dict>
+	<dict>
+		<key>Region</key>
+		<string>America</string>
+	</dict>
+	<dict>
+		<key>Region</key>
+		<string>Oceania</string>
 	</dict>
 </array>
 </plist>

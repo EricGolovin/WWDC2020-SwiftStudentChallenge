@@ -449,5 +449,595 @@ There’s no doubt that he had a huge influence on society, though. His inventio
 		<key>Gender</key>
 		<string>man</string>
 	</dict>
+	<dict>
+		<key>Image</key>
+		<string>RonaldReagan</string>
+		<key>Name</key>
+		<string>Ronald Reagan</string>
+		<key>Country</key>
+		<string>USA 🇬🇧 America</string>
+		<key>Quotes</key>
+		<array>
+			<string>&quot;Concentrated power has always been the enemy of liberty.&quot;
+
+&quot;</string>
+			<string>&quot;Welfare&apos;s purpose should be to eliminate, as far as possible, the need for its own existence.&quot;</string>
+			<string>&quot;Government is like a baby. An alimentary canal with a big appetite at one end and no sense of responsibility at the other.&quot;</string>
+		</array>
+		<key>Info</key>
+		<string>Ronald Reagan (1911-2004), a former actor and California governor, served as the 40th president from 1981 to 1989. Raised in small-town Illinois, he became a Hollywood actor in his 20s and later served as the Republican governor of California from 1967 to 1975. Dubbed the Great Communicator, the affable Reagan became a popular two-term president. He cut taxes, increased defense spending, negotiated a nuclear arms reduction agreement with the Soviets and is credited with helping to bring a quicker end to the Cold War. Reagan, who survived a 1981 assassination attempt, died at age 93 after battling Alzheimer’s disease.
+
+</string>
+		<key>Jobs</key>
+		<array>
+			<string>artist</string>
+			<string>lawyer</string>
+		</array>
+		<key>Gender</key>
+		<string>man</string>
+	</dict>
+	<dict>
+		<key>Image</key>
+		<string>Madonna</string>
+		<key>Name</key>
+		<string>Madonna</string>
+		<key>Country</key>
+		<string>USA 🇬🇧 America</string>
+		<key>Quotes</key>
+		<array>
+			<string>“Sometimes you have to be a bitch to get things done.”</string>
+			<string>“A lot of people are afraid to say what they want. That&apos;s why they don&apos;t get what they want.”</string>
+			<string>“No matter who you are, no matter what you did, no matter where you&apos;ve come from, you can always change, become a better version of yourself.”</string>
+		</array>
+		<key>Info</key>
+		<string>Madonna Louise Ciccone is an American singer, songwriter, and actress. Referred to as the &quot;Queen of Pop&quot; since the 1980s, Madonna is known for pushing the boundaries of songwriting in popular music and for the visuals she uses onstage and in music videos. She has frequently reinvented her music and image while remaining completely in charge of every aspect of her career. Her diverse works, which incorporated social, political, sexual, and religious themes, have generated both critical acclaim and controversy. Madonna is often cited as an influence by other artists.</string>
+		<key>Jobs</key>
+		<array>
+			<string>artist</string>
+			<string>singer</string>
+			<string>entrepreneur</string>
+		</array>
+		<key>Gender</key>
+		<string>woman</string>
+	</dict>
+	<dict>
+		<key>Image</key>
+		<string>SteveJobs</string>
+		<key>Name</key>
+		<string>Steve Jobs</string>
+		<key>Country</key>
+		<string>USA 🇬🇧 America</string>
+		<key>Quotes</key>
+		<array>
+			<string>“Your time is limited, so don’t waste it living someone else’s life.”</string>
+			<string>“Don’t let the noise of others’ opinions drown out your own inner voice.”</string>
+			<string>“Have the courage to follow your heart and intuition. They somehow already know what you truly want to become.”</string>
+		</array>
+		<key>Info</key>
+		<string>Steven Paul Jobs was an American business magnate, industrial designer, investor, and media proprietor. He was the chairman, chief executive officer (CEO), and co-founder of Apple Inc., the chairman and majority shareholder of Pixar, a member of The Walt Disney Company&apos;s board of directors following its acquisition of Pixar, and the founder, chairman, and CEO of NeXT. Jobs is widely recognized as a pioneer of the personal computer revolution of the 1970s and 1980s, along with Apple co-founder Steve Wozniak.
+
+Jobs was born in San Francisco, California, and put up for adoption. He was raised in the San Francisco Bay Area. He attended Reed College in 1972 before dropping out that same year, and traveled through India in 1974 seeking enlightenment and studying Zen Buddhism. His declassified FBI report states that he used marijuana and LSD while he was in college, and once told a reporter that taking LSD was &quot;one of the two or three most important things&quot; he had done in his life.
+
+Jobs and Wozniak co-founded Apple in 1976 to sell Wozniak&apos;s Apple I personal computer. Together the duo gained fame and wealth a year later with the Apple II, one of the first highly successful mass-produced microcomputers. Jobs saw the commercial potential of the Xerox Alto in 1979, which was mouse-driven and had a graphical user interface (GUI). This led to the development of the unsuccessful Apple Lisa in 1983, followed by the breakthrough Macintosh in 1984, the first mass-produced computer with a GUI. The Macintosh introduced the desktop publishing industry in 1985 with the addition of the Apple LaserWriter, the first laser printer to feature vector graphics. Jobs was forced out of Apple in 1985 after a long power struggle with the company&apos;s board and its then-CEO John Sculley. That same year, Jobs took a few of Apple&apos;s members with him to found NeXT, a computer platform development company that specialized in computers for higher-education and business markets. In addition, he helped to develop the visual effects industry when he funded the computer graphics division of George Lucas&apos;s Lucasfilm in 1986. The new company was Pixar, which produced the first 3D computer animated film Toy Story (1995).
+
+Apple acquired NeXT in 1997, and Jobs became CEO of his former company within a few months. He was largely responsible for helping revive Apple, which had been at the verge of bankruptcy. He worked closely with designer Jony Ive to develop a line of products that had larger cultural ramifications, beginning in 1997 with the &quot;Think different&quot; advertising campaign and leading to the iMac, iTunes, iTunes Store, Apple Store, iPod, iPhone, App Store, and the iPad. In 2001, the original Mac OS was replaced with a completely new Mac OS X, based on NeXT&apos;s NeXTSTEP platform, giving the OS a modern Unix-based foundation for the first time. Jobs was diagnosed with a pancreatic neuroendocrine tumor in 2003. He died of respiratory arrest related to the tumor at age 56 on October 5, 2011.</string>
+		<key>Jobs</key>
+		<array>
+			<string>investor</string>
+			<string>entrepreneur</string>
+		</array>
+		<key>Gender</key>
+		<string>man</string>
+	</dict>
+	<dict>
+		<key>Image</key>
+		<string>AmeliaEarhart</string>
+		<key>Name</key>
+		<string>Amelia Earhart</string>
+		<key>Country</key>
+		<string>USA 🇬🇧 America</string>
+		<key>Quotes</key>
+		<array>
+			<string>-</string>
+		</array>
+		<key>Info</key>
+		<string>Amelia Mary Earhart was an American aviation pioneer and author. Earhart was the first female aviator to fly solo across the Atlantic Ocean. She set many other records, wrote best-selling books about her flying experiences, and was instrumental in the formation of The Ninety-Nines, an organization for female pilots.
+
+Born in Atchison, Kansas, Earhart developed a passion for adventure at a young age, steadily gaining flying experience from her twenties. In 1928, Earhart became the first female passenger to cross the Atlantic by airplane (accompanying pilot Wilmer Stultz), for which she achieved celebrity status. In 1932, piloting a Lockheed Vega 5B, Earhart made a nonstop solo transatlantic flight, becoming the first woman to achieve such a feat. She received the United States Distinguished Flying Cross for this accomplishment.[6] In 1935, Earhart became a visiting faculty member at Purdue University as an advisor to aeronautical engineering and a career counselor to women students. She was also a member of the National Woman&apos;s Party and an early supporter of the Equal Rights Amendment.[7][8]
+
+During an attempt to make a circumnavigational flight of the globe in 1937 in a Purdue-funded Lockheed Model 10-E Electra, Earhart and navigator Fred Noonan disappeared over the central Pacific Ocean near Howland Island.</string>
+		<key>Jobs</key>
+		<array>
+			<string>artist</string>
+			<string>pilot</string>
+		</array>
+		<key>Gender</key>
+		<string>woman</string>
+	</dict>
+	<dict>
+		<key>Image</key>
+		<string>GeorgeWashingtonCarver</string>
+		<key>Name</key>
+		<string>George Washington Carver</string>
+		<key>Country</key>
+		<string>USA 🇬🇧 America</string>
+		<key>Quotes</key>
+		<array>
+			<string>&quot;Where there is no vision, there is no hope.&quot;</string>
+			<string>&quot;Nothing is more beautiful than the loveliness of the woods before sunrise.&quot;
+
+</string>
+			<string>&quot;Fear of something is at the root of hate for others, and hate within will eventually destroy the hater.&quot;
+
+</string>
+		</array>
+		<key>Info</key>
+		<string>George Washington Carver was a prominent American scientist and inventor in the early 1900s. Carver developed hundreds of products using the peanut, sweet potatoes and soybeans. He also was a champion of crop rotation and agricultural education. Born into slavery, today he is an icon of American ingenuity and the transformative potential of education.</string>
+		<key>Jobs</key>
+		<array>
+			<string>inventor</string>
+		</array>
+		<key>Gender</key>
+		<string>man</string>
+	</dict>
+	<dict>
+		<key>Image</key>
+		<string>CharlesLindbergh</string>
+		<key>Name</key>
+		<string>Charles Lindbergh</string>
+		<key>Country</key>
+		<string>USA 🇬🇧 America</string>
+		<key>Quotes</key>
+		<array>
+			<string>-</string>
+		</array>
+		<key>Info</key>
+		<string>Charles Augustus Lindbergh was an American aviator, military officer, author, inventor, and activist. At the age of 25 in 1927, he went from obscurity as a U.S. Air Mail pilot to instantaneous world fame by winning the Orteig Prize for making a nonstop flight from New York to Paris. Lindbergh covered the ​33 1⁄2-hour, 3,600-statute-mile (5,800 km) flight alone in a purpose-built, single-engine Ryan monoplane, the Spirit of St. Louis. Although not the first non-stop transatlantic flight, this was the first solo transatlantic flight, the first transatlantic flight between two major city hubs, and the longest transatlantic flight by almost 2,000 miles, thus it is widely considered a turning point in the development of aviation.</string>
+		<key>Jobs</key>
+		<array>
+			<string>pilot</string>
+		</array>
+		<key>Gender</key>
+		<string>man</string>
+	</dict>
+	<dict>
+		<key>Image</key>
+		<string>JonasSalk</string>
+		<key>Name</key>
+		<string>Jonas Salk</string>
+		<key>Country</key>
+		<string>USA 🇬🇧 America</string>
+		<key>Quotes</key>
+		<array>
+			<string>“Are we being good ancestors?”</string>
+			<string>“I have had dreams, and I&apos;ve had nightmares. I overcame the nightmares because of my dreams.”</string>
+			<string>“There is hope in dreams, imagination, and in the courage of those who wish to make those dreams a reality.”</string>
+		</array>
+		<key>Info</key>
+		<string>Jonas Edward Salk (/sɔːlk/; born Jonas Salk; October 28, 1914 – June 23, 1995) was an American physician, medical researcher and virologist who developed one of the first successful polio vaccines. He was born in New York City and attended the City College of New York and New York University School of Medicine, later choosing to do medical research instead of becoming a practicing physician. He began an internship as a physician scientist at Mount Sinai Hospital in New York City in 1939.[1] Two years later, he was granted a fellowship at the University of Michigan where he studied flu viruses with his mentor Thomas Francis Jr.</string>
+		<key>Jobs</key>
+		<array>
+			<string>scientist</string>
+			<string>inventor</string>
+		</array>
+		<key>Gender</key>
+		<string>man</string>
+	</dict>
+	<dict>
+		<key>Image</key>
+		<string>ElvisPresley</string>
+		<key>Name</key>
+		<string>Elvis Presley</string>
+		<key>Country</key>
+		<string>USA 🇬🇧 America</string>
+		<key>Quotes</key>
+		<array>
+			<string>“When things go wrong, don&apos;t go with them.”</string>
+			<string>“Animals don&apos;t hate, and we&apos;re supposed to be better than them.”</string>
+			<string>“Truth is like the sun. You can shut it out for a time, but it ain&apos;t going away.”</string>
+		</array>
+		<key>Info</key>
+		<string>Often referred to as ‘the King’, Elvis was one of the most important cultural icons of the 20th century. A shy boy he was often bullied at school and told he could not sing. He began to stand out more in his junior year due to his appearances. His first recordings were with Sun records in 1953 but his debut album was released in 1956 which is  famous for the single blue suede shoes.</string>
+		<key>Jobs</key>
+		<array>
+			<string>artist</string>
+			<string>singer</string>
+		</array>
+		<key>Gender</key>
+		<string>man</string>
+	</dict>
+	<dict>
+		<key>Image</key>
+		<string>MarilynMonroe</string>
+		<key>Name</key>
+		<string>Marilyn Monroe</string>
+		<key>Country</key>
+		<string>USA 🇬🇧 America</string>
+		<key>Quotes</key>
+		<array>
+			<string>“If you can make a woman laugh, you can make her do anything.”</string>
+			<string>“The real lover is the man who can thrill you by kissing your forehead or smiling into your eyes or just staring into space.”</string>
+			<string>“I am good, but not an angel. I do sin, but I am not the devil. I am just a small girl in a big world trying to find someone to love.”</string>
+		</array>
+		<key>Info</key>
+		<string>Born as Norma Mortenson, Monroe spent much of her childhood in foster homes. She started her career as a model but was offered a film contract from twentieth century-fox in 1946.  She starred in a number of successful motion pictures during the 1950’s and became a major sex symbol. The film Some like it Hot was one of her biggest successes for which she received a Golden Globe Award.</string>
+		<key>Jobs</key>
+		<array>
+			<string>artist</string>
+			<string>lawyer</string>
+		</array>
+		<key>Gender</key>
+		<string>man</string>
+	</dict>
+	<dict>
+		<key>Image</key>
+		<string>NeilArmstrong</string>
+		<key>Name</key>
+		<string>Neil Armstrong</string>
+		<key>Country</key>
+		<string>USA 🇬🇧 America</string>
+		<key>Quotes</key>
+		<array>
+			<string>“That&apos;s one small step for a man, one giant leap for mankind”</string>
+			<string>“Mystery creates wonder and wonder is the basis of man&apos;s desire to understand.”</string>
+			<string>“I believe that every human has a finite amount of heartbeats. I don&apos;t intend to waste any of mine running around doing exercises.”</string>
+		</array>
+		<key>Info</key>
+		<string>A famous American astronaut, Armstrong was the first person to walk on the moon. Armstrong was a very humble person and was referred to as a reluctant American Hero. Before becoming an astronaut Armstrong was an officer in the U.S Navy and served in the Korean War.</string>
+		<key>Jobs</key>
+		<array>
+			<string>pilot</string>
+			<string>astronaut</string>
+		</array>
+		<key>Gender</key>
+		<string>man</string>
+	</dict>
+	<dict>
+		<key>Image</key>
+		<string>MonicaLewinsky</string>
+		<key>Name</key>
+		<string>Monica Lewinsky</string>
+		<key>Country</key>
+		<string>USA 🇬🇧 America</string>
+		<key>Quotes</key>
+		<array>
+			<string>I have spent the past several years working so hard to just move on, and to try and build a life for myself.</string>
+			<string>I know I will never have an affair with a married man again.</string>
+			<string>I certainly know that this relationship could not have continued the way it did, when I was at the Pentagon and the president was obviously at the White House, without Betty.</string>
+		</array>
+		<key>Info</key>
+		<string>Lewinsky is known for her affair with President Bill Clinton, which took place while she worked in the White House from 1995 – 1996. The affair became known as the Lewinsky scandal and caused serious repercussions such as Clinton’s impeachment. She later created a line of handbags, became an advertising spokesperson for a diet plan and obtained a masters degree in psychology in London.</string>
+		<key>Jobs</key>
+		<array>
+			<string>artist</string>
+			<string>entrepreneur</string>
+			<string>lawyer</string>
+		</array>
+		<key>Gender</key>
+		<string>woman</string>
+	</dict>
+	<dict>
+		<key>Image</key>
+		<string>BritneySpears</string>
+		<key>Name</key>
+		<string>Britney Spears</string>
+		<key>Country</key>
+		<string>USA 🇬🇧 America</string>
+		<key>Quotes</key>
+		<array>
+			<string>“I believe we all have one true love, somewhere in this world I do.”</string>
+			<string>“I don&apos;t like defining myself. I just am.”</string>
+			<string>“I had some tough times...i did some bad shit...but i&apos;m still the same girl i used to be”</string>
+		</array>
+		<key>Info</key>
+		<string>Britney is an American pop singer, dancer and actress. After appearing in stage productions and TV shows as a child she was signed to Jive records in 1997, shortly after she was established as a pop icon and credited with the revival of teen pop. She is best know for tracks Baby one more time  and Oop’s…I did it again; as well as her personal struggles, such as shaving her head in 2007. She made a comeback with the album Circus and has since been an X Factor judge and released her 8th album.</string>
+		<key>Jobs</key>
+		<array>
+			<string>artist</string>
+			<string>singer</string>
+		</array>
+		<key>Gender</key>
+		<string>woman</string>
+	</dict>
+	<dict>
+		<key>Image</key>
+		<string>PauloCoelho</string>
+		<key>Name</key>
+		<string>Paulo Coelho</string>
+		<key>Country</key>
+		<string>Brazil 🇧🇷 America</string>
+		<key>Quotes</key>
+		<array>
+			<string>“And, when you want something, all the universe conspires in helping you to achieve it.”</string>
+			<string>“It&apos;s the possibility of having a dream come true that makes life interesting.”</string>
+			<string>“When we love, we always strive to become better than we are. When we strive to become better than we are, everything around us becomes better too.”</string>
+		</array>
+		<key>Info</key>
+		<string>Brazil-born Paulo Coelho is a lyricist and novelist who has become one of the most widely read authors in the world, and one of the most famous Latin Americans today. His most celebrated novel is international bestseller The Alchemist, which has been translated into 80 languages and sold more than 65 million copies. It tells the story of a young shepherd on a spiritual journey to the Egyptian pyramids in search of treasure.</string>
+		<key>Jobs</key>
+		<array>
+			<string>doctor</string>
+			<string>inventor</string>
+			<string>scientist</string>
+		</array>
+		<key>Gender</key>
+		<string>man</string>
+	</dict>
+	<dict>
+		<key>Image</key>
+		<string>FridaKahlo</string>
+		<key>Name</key>
+		<string>Frida Kahlo</string>
+		<key>Country</key>
+		<string>Mexico 🇲🇽 America</string>
+		<key>Quotes</key>
+		<array>
+			<string>“At the end of the day, we can endure much more than we think we can.”</string>
+			<string>“I drank to drown my sorrows, but the damned things learned how to swim.”</string>
+			<string>“I don&apos;t paint dreams or nightmares, I paint my own reality.”</string>
+		</array>
+		<key>Info</key>
+		<string>Mexican painter Frida Kahlo de Rivera is best known for her self-portraits, her political activism and her focus on Mexican and Amerindian cultural traditions. Her works depicting women have also gained her the status of a feminist icon. Kahlo began painting when recovering from a bus accident which left her temporarily paralyzed and unable to walk.</string>
+		<key>Jobs</key>
+		<array>
+			<string>artist</string>
+			<string>lawyer</string>
+		</array>
+		<key>Gender</key>
+		<string>woman</string>
+	</dict>
+	<dict>
+		<key>Image</key>
+		<string>GabrielGarcíaMárquez</string>
+		<key>Name</key>
+		<string>Gabriel García Márquez</string>
+		<key>Country</key>
+		<string>Colombia 🇨🇴 America</string>
+		<key>Quotes</key>
+		<array>
+			<string>“No medicine cures what happiness cannot.”</string>
+			<string>“What matters in life is not what happens to you but what you remember and how you remember it.”</string>
+			<string>“It&apos;s enough for me to be sure that you and I exist at this moment.”</string>
+		</array>
+		<key>Info</key>
+		<string>Born Gabriel José de la Concordia García Márquez, but known affectionately as ‘Gabo’, this Colombian journalist, short story writer, screenwriter and novelist is best known for his novels One Hundred Years of Solitude and Love in the Time of Cholera. Gabriel García Márquez was the recipient of the Nobel Prize in Literature in 1982 and is noted for popularizing the literary genre magic realism.</string>
+		<key>Jobs</key>
+		<array>
+			<string>artist</string>
+		</array>
+		<key>Gender</key>
+		<string>man</string>
+	</dict>
+	<dict>
+		<key>Image</key>
+		<string>JulioCortázar</string>
+		<key>Name</key>
+		<string>Julio Cortázar</string>
+		<key>Country</key>
+		<string>Argentina 🇦🇷 America</string>
+		<key>Quotes</key>
+		<array>
+			<string>“Come sleep with me: We won&apos;t make Love, Love will make us.”</string>
+			<string>“Creo que todos tenemos un poco de esa bella locura que nos mantiene andando cuando todo alrededor es tan insanamente cuerdo.”</string>
+		</array>
+		<key>Info</key>
+		<string>If the recent release of this year’s QS University Rankings: Latin America has got you thinking about studying abroad in Latin America, you’ll be glad to know you’re in good company. Latin America has produced and nurtured world-leading thinkers and innovators across a wide range of fields, including musicians, actors, artists, designers, film directors, writers, politicians, sportspersons and philosophers.
+
+
+Discover some famous Latin Americans below, and get some extra motivation for the next stage of your studies, travels or career with these inspirational quotes about study, travel, language and life in general.
+
+1. Paulo Coelho
+
+
+Brazil-born Paulo Coelho is a lyricist and novelist who has become one of the most widely read authors in the world, and one of the most famous Latin Americans today. His most celebrated novel is international bestseller The Alchemist, which has been translated into 80 languages and sold more than 65 million copies. It tells the story of a young shepherd on a spiritual journey to the Egyptian pyramids in search of treasure.
+
+Find out more about studying in Brazil &gt;
+
+2. Frida Kahlo
+
+
+Mexican painter Frida Kahlo de Rivera is best known for her self-portraits, her political activism and her focus on Mexican and Amerindian cultural traditions. Her works depicting women have also gained her the status of a feminist icon. Kahlo began painting when recovering from a bus accident which left her temporarily paralyzed and unable to walk.
+
+To read more about studying in Mexico, visit our guide &gt; 
+
+3. Gabriel García Márquez
+
+
+Born Gabriel José de la Concordia García Márquez, but known affectionately as ‘Gabo’, this Colombian journalist, short story writer, screenwriter and novelist is best known for his novels One Hundred Years of Solitude and Love in the Time of Cholera. Gabriel García Márquez was the recipient of the Nobel Prize in Literature in 1982 and is noted for popularizing the literary genre magic realism.
+
+Read more about studying abroad in Colombia &gt;
+
+4. Julio Cortázar
+
+
+Julio Cortázar was born in Belgium to Argentine parents but grew up in Buenos Aires, eventually becoming a novelist, short story writer, essayist and translator. A master of the ‘fantastic’ short story form, Cortázar is known as one of the major forces in the Latin American Boom – a period spanning the 1960s and 1970s in which the region’s artists and intellectuals gained greater international attention than they had previously. Several places in Buenos Aires bear his name, including a square in the Palermo neighborhood</string>
+		<key>Jobs</key>
+		<array>
+			<string>artist</string>
+			<string>entrepreneur</string>
+		</array>
+		<key>Gender</key>
+		<string>man</string>
+	</dict>
+	<dict>
+		<key>Image</key>
+		<string>PabloNeruda</string>
+		<key>Name</key>
+		<string>Pablo Neruda</string>
+		<key>Country</key>
+		<string>Chile 🇨🇱 America</string>
+		<key>Quotes</key>
+		<array>
+			<string>“Love is so short, forgetting is so long.”</string>
+			<string>“I love you as certain dark things are to be loved,
+in secret, between the shadow and the soul.”</string>
+			<string>“I want
+To do with you what spring does with the cherry trees.”</string>
+		</array>
+		<key>Info</key>
+		<string>Chilean poet-diplomat Pablo Neruda was referred to as “the greatest poet of the 20th century in any language” by Gabriel García Márquez. Having written poetry since he was a teenager, Neruda was known for his surrealist poems, historical epics, political manifestos and erotically-charged love poems. He was also known for writing in green ink – his personal symbol for desire and hope.</string>
+		<key>Jobs</key>
+		<array>
+			<string>entrepreneur</string>
+			<string>artist</string>
+			<string>lawyer</string>
+		</array>
+		<key>Gender</key>
+		<string>man</string>
+	</dict>
+	<dict>
+		<key>Image</key>
+		<string>JosephMAcaba</string>
+		<key>Name</key>
+		<string>Joseph M. Acaba</string>
+		<key>Country</key>
+		<string>Puerto-Rico 🇵🇷 America</string>
+		<key>Quotes</key>
+		<array>
+			<string>“As an educator, I think the most important thing for me is to fulfill the goal of inspiring the next generation. Motivating kids to learn is as important as the subject matter.”</string>
+		</array>
+		<key>Info</key>
+		<string>Joseph Michael &quot;Joe&quot; Acabá (born May 17, 1967) is an American educator, hydrogeologist, and NASA astronaut.[1][2] In May 2004 he became the first person of Puerto Rican heritage to be named as a NASA astronaut candidate, when he was selected as a member of NASA Astronaut Training Group 19.[3] He completed his training on February 10, 2006 and was assigned to STS-119, which flew from March 15 to March 28, 2009 to deliver the final set of solar arrays to the International Space Station.[4] Acabá served as a Flight Engineer aboard the International Space Station, having launched on May 15, 2012.[5] He arrived at the space station on May 17 and returned to Earth on September 17, 2012.[6][7] Acaba returned to the International Space Station in 2017 as a member of Expedition 53/54.[8]</string>
+		<key>Jobs</key>
+		<array>
+			<string> scientist</string>
+			<string>astronaut</string>
+			<string>engineer</string>
+		</array>
+		<key>Gender</key>
+		<string>man</string>
+	</dict>
+	<dict>
+		<key>Image</key>
+		<string>Miguel de Icaza</string>
+		<key>Name</key>
+		<string>Miguel de Icaza</string>
+		<key>Country</key>
+		<string>Mexico 🇲🇽 America</string>
+		<key>Quotes</key>
+		<array>
+			<string>-</string>
+		</array>
+		<key>Info</key>
+		<string>Miguel de Icaza (born November 23, 1972)[1] is a Mexican-American programmer, best known for starting the GNOME, Mono, and Xamarin projects.</string>
+		<key>Jobs</key>
+		<array>
+			<string>engineer</string>
+			<string>developer</string>
+		</array>
+		<key>Gender</key>
+		<string>man</string>
+	</dict>
+	<dict>
+		<key>Image</key>
+		<string>LydiaVilla-Komaroff</string>
+		<key>Name</key>
+		<string>Lydia Villa-Komaroff</string>
+		<key>Country</key>
+		<string>Mexico 🇲🇽 America</string>
+		<key>Quotes</key>
+		<array>
+			<string>It might have been ignited by President Donald Trump, but it&apos;s not about President Donald Trump, it&apos;s about the importance of science in society and continuing the support for the science community in keeping our edge.</string>
+		</array>
+		<key>Info</key>
+		<string>Lydia Villa-Komaroff (born August 7, 1947) is a molecular and cellular biologist who has been an academic laboratory scientist, a university administrator, and a business woman. She was the third[1] Mexican American woman in the United States to receive a doctorate degree in the sciences (1975) and is a co-founding member of The Society for the Advancement of Chicanos/Hispanics and Native Americans in Science (SACNAS).[2] Her most notable discovery was in 1978 during her post-doctoral research, when she was part of a team that discovered how bacterial cells could be used to generate insulin</string>
+		<key>Jobs</key>
+		<array>
+			<string>engineer</string>
+			<string>inventor</string>
+			<string>scientist</string>
+		</array>
+		<key>Gender</key>
+		<string>woman</string>
+	</dict>
+	<dict>
+		<key>Image</key>
+		<string>SarahStewart</string>
+		<key>Name</key>
+		<string>Sarah Stewart</string>
+		<key>Country</key>
+		<string>Mexico 🇲🇽 America</string>
+		<key>Quotes</key>
+		<array>
+			<string>“Elizabeth Brown prefered a book to going on a date. While friends went out and danced &apos;till dawn, she stayed up, reading late.”</string>
+		</array>
+		<key>Info</key>
+		<string>Sarah Stewart (August 16, 1905 – November 27, 1976) was a Mexican American researcher who pioneered the field of viral oncology research, the first to show that cancer-causing viruses can spread from animal to animal. She and Bernice Eddy co-discovered the first polyoma virus, and Stewart-Eddy polyoma virus is named after them.</string>
+		<key>Jobs</key>
+		<array>
+			<string>scientist</string>
+			<string>doctor</string>
+		</array>
+		<key>Gender</key>
+		<string>woman</string>
+	</dict>
+	<dict>
+		<key>Image</key>
+		<string>HelenRodríguezTrías</string>
+		<key>Name</key>
+		<string>Helen Rodríguez Trías</string>
+		<key>Country</key>
+		<string> Puerto Rico
+ Puerto Rico
+Puerto-Rico 🇵🇷 America</string>
+		<key>Quotes</key>
+		<array>
+			<string>-</string>
+		</array>
+		<key>Info</key>
+		<string>Helen Rodríguez Trías[note 1] (July 7, 1929 – December 27, 2001) was a pediatrician, educator and women&apos;s rights activist. She was the first Latina president of the American Public Health Association (APHA), a founding member of the Women&apos;s Caucus of the APHA, and a recipient of the Presidential Citizens Medal. She is credited with helping to expand the range of public health services for women and children in minority and low-income populations around the world.</string>
+		<key>Jobs</key>
+		<array>
+			<string>doctor</string>
+			<string>scientist</string>
+		</array>
+		<key>Gender</key>
+		<string>woman</string>
+	</dict>
+	<dict>
+		<key>Image</key>
+		<string>MarioJMolina</string>
+		<key>Name</key>
+		<string>Mario J. Molina</string>
+		<key>Country</key>
+		<string>Mexico 🇲🇽 America</string>
+		<key>Quotes</key>
+		<array>
+			<string>-</string>
+		</array>
+		<key>Info</key>
+		<string>Mario José Molina-Pasquel Henríquez (born March 19, 1943) is a Mexican chemist. He played a pivotal role in the discovery of the Antarctic ozone hole, and was a co-recipient of the 1995 Nobel Prize in Chemistry for his role in elucidating the threat to the Earth&apos;s ozone layer of chlorofluorocarbon (CFC) gases. He became the first Mexican-born citizen to receive a Nobel Prize in Chemistry.[7]
+
+In 2004 Molina accepted the positions of professor at the University of California, San Diego and the Center for Atmospheric Sciences at the Scripps Institution of Oceanography. Molina is also Director of the Mario Molina Center for Energy and Environment in Mexico City. Molina was a climate policy adviser to the President of Mexico, Enrique Peña Nieto.</string>
+		<key>Jobs</key>
+		<array>
+			<string>scientist</string>
+			<string>inventor</string>
+		</array>
+		<key>Gender</key>
+		<string>man</string>
+	</dict>
+	<dict>
+		<key>Image</key>
+		<string>IsabelaMoner</string>
+		<key>Name</key>
+		<string>Isabela Moner</string>
+		<key>Country</key>
+		<string>USA 🇬🇧 America</string>
+		<key>Quotes</key>
+		<array>
+			<string>We don&apos;t have Latina heroines in theaters; I haven&apos;t seen Marvel doing it.</string>
+			<string>Every girl wants the same thing - to be accepted and loved for who she is.</string>
+			<string>I don&apos;t think I related to the Irish Catholic surroundings that was my environment when I was growing up.</string>
+		</array>
+		<key>Info</key>
+		<string>Isabela Moner (born July 10, 2001[3]), also known as Isabela Merced, is an American actress and singer. She played the lead role of CJ Martin on the Nickelodeon television series 100 Things to Do Before High School. In film, she played Izabella in Transformers: The Last Knight (2017), Lizzy in Instant Family (2018), and Isabel in Sicario: Day of the Soldado (2018). In 2019, Moner starred as the titular character of Dora in the film Dora and the Lost City of Gold. From 2014 to 2017, she provided the voice of Kate in Nickelodeon&apos;s animated television spinoff series Dora and Friends: Into the City!.</string>
+		<key>Jobs</key>
+		<array>
+			<string>artist</string>
+		</array>
+		<key>Gender</key>
+		<string>woman</string>
+	</dict>
 </array>
 </plist>
