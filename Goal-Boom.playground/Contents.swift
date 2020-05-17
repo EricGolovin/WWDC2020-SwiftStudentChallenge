@@ -303,9 +303,11 @@ class IntroductionViewController: UIViewController {
     }
     
     func updateUI() {
-        guard let image = imgManager.getFirstImage() else {
-            fatalError("No Image Found")
+        let data = imgManager.getFirstImage()
+        guard let image = data.image, let detail = data.detail else {
+            fatalError("No image or detailText found")
         }
+        
         // MARK: - Instantiating UIViews
         let animationView = UIView(frame: view.bounds)
         let imageView = UIImageView(image: image)
@@ -315,6 +317,7 @@ class IntroductionViewController: UIViewController {
         
         
         // MARK: Instantiating Elements
+        let detailLabel = UILabel(frame: CGRect(x: 10, y: 10, width: 100, height: 100))
         let backButton = UIButton(type: .custom)
         let nextButton = UIButton()
         let stackView = UIStackView(arrangedSubviews: [backButton, nextButton])
@@ -339,10 +342,6 @@ class IntroductionViewController: UIViewController {
         animationView.layer.animate(colors: colors, duration: 5, sizing: animationView.bounds)
         
         // MARK: Configuring Elements
-        //        let buttonTitleShadow = NSShadow()
-        //        buttonTitleShadow.shadowColor = UIColor.black.cgColor
-        //        buttonTitleShadow.shadowOffset = CGSize(width: 10, height: 10)
-        //        buttonTitleShadow.shadowBlurRadius = 10
         backButton.setTitle("<-", for: .normal)
         backButton.backgroundColor = .white
         backButton.setAttributedTitle(NSAttributedString(string: "←", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 0, green: 191/255, blue: 1, alpha: 0.5)]), for: .normal)
@@ -378,12 +377,26 @@ class IntroductionViewController: UIViewController {
         }
         stackV = stackView
         
+        detailLabel.textColor = .white
+        detailLabel.font = UIFont(name: "Helvetica-Bold", size: 25)
+        detailLabel.numberOfLines = 2
+        detailLabel.text = detail
+        detailLabel.tag = 200
+        detailLabel.backgroundColor = .clear
+        detailLabel.textAlignment = .center
+        detailLabel.layer.shadowRadius = 10
+        detailLabel.layer.shadowOpacity = 1
+        detailLabel.layer.shadowOffset = .zero
+        detailLabel.layer.shadowColor = UIColor.white.cgColor
+        detailLabel.translatesAutoresizingMaskIntoConstraints = false
+        
         // MARK: - Addding Subviews
         
         animationView.addSubview(blurView)
         animationView.addSubview(informationView)
         self.view.addSubview(animationView)
         self.view.addSubview(imageView)
+        self.view.addSubview(detailLabel)
         self.view.addSubview(stackView)
         
         // MARK: - Configuring Layout
@@ -392,16 +405,23 @@ class IntroductionViewController: UIViewController {
             informationView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -40),
             informationView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -325),
             informationView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 40),
+            
             stackView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -40),
             stackView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -40),
-            stackView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 40),
             stackView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 40),
+            
             stackView.arrangedSubviews[0].heightAnchor.constraint(equalToConstant: 50),
             stackView.arrangedSubviews[1].heightAnchor.constraint(equalToConstant: 50),
+            
             imageView.topAnchor.constraint(equalTo: informationView.topAnchor),
             imageView.rightAnchor.constraint(equalTo: informationView.rightAnchor, constant: -5),
             imageView.bottomAnchor.constraint(equalTo: informationView.bottomAnchor),
             imageView.leftAnchor.constraint(equalTo: informationView.leftAnchor, constant: 5),
+            
+            detailLabel.topAnchor.constraint(equalTo: informationView.bottomAnchor),
+            detailLabel.rightAnchor.constraint(equalTo: self.view.rightAnchor),
+            detailLabel.bottomAnchor.constraint(equalTo: stackView.bottomAnchor, constant: -80),
+            detailLabel.leftAnchor.constraint(equalTo: self.view.leftAnchor),
         ]
         
         NSLayoutConstraint.activate(constraits)
@@ -411,21 +431,28 @@ class IntroductionViewController: UIViewController {
     // MARK: - Actions
     @objc func backButtonPressed(_ sender: UIButton) {
         print("BackButton Pressed")
+        let data = imgManager.getImage(next: false)
         for subview in view.subviews {
-            if (subview.tag == 100) {
-                let imageView = (subview as! UIImageView)
-                if let image = imgManager.getImage(next: false) {
-                    //                    UIView.animate(withDuration: 5) {
-                    //                        imageView.image = image
-                    //                    }
+            if subview.tag == 100 {
+                let imageView = subview as! UIImageView
+                
+                if let image = data.image {
                     UIView.transition(with: imageView, duration: 0.75, options: .transitionCrossDissolve, animations: {
                         imageView.image = image
                         
                     }, completion: nil)
                 } else {
-                    print("Theare No images left")
+                    print("There is No images left")
                 }
-                
+            } else if subview.tag == 200 {
+                let detailLabel = subview as! UILabel
+                if let detail = data.detail {
+                    UIView.transition(with: detailLabel, duration: 0.75, options: .transitionCrossDissolve, animations: {
+                        detailLabel.text = detail
+                      }, completion: nil)
+                } else {
+                    print("There is No detailText left")
+                }
             }
             
         }
@@ -445,19 +472,26 @@ class IntroductionViewController: UIViewController {
     
     @objc func nextButtonPressed(_ sender: UIButton) {
         print("NextButton Pressed")
+        let data = imgManager.getImage(next: true)
         for subview in view.subviews {
-            if (subview.tag == 100) {
-                let imageView = (subview as! UIImageView)
-                if let image = imgManager.getImage(next: true) {
-                    //                    UIView.animate(withDuration: 5) {
-                    //                        imageView.image = image
-                    //                    }
+            if subview.tag == 100 {
+                let imageView = subview as! UIImageView
+                if let image = data.image {
                     UIView.transition(with: imageView, duration: 0.75, options: .transitionCrossDissolve, animations: {
                         imageView.image = image
                         
                     }, completion: nil)
                 } else {
                     print("There No images left")
+                }
+            } else if subview.tag == 200 {
+                let detailLabel = subview as! UILabel
+                if let detail = data.detail {
+                    UIView.transition(with: detailLabel, duration: 0.75, options: .transitionCrossDissolve, animations: {
+                        detailLabel.text = detail
+                      }, completion: nil)
+                } else {
+                    print("There is No detailText left")
                 }
             }
         }
@@ -530,7 +564,7 @@ class CountryTableViewController: UIViewController, UITableViewDataSource, UITab
         questionLabel.text = "Choose your \ncountry"
         questionLabel.textColor = .white
         questionLabel.numberOfLines = 0
-        questionLabel.font = UIFont(name: "Kefa", size: 40)
+        questionLabel.font = UIFont(name: "Helvetica", size: 40)
         questionLabel.adjustsFontSizeToFitWidth = true
         questionLabel.backgroundColor = .clear
         
@@ -661,7 +695,7 @@ class GenderTableViewController: UIViewController, UITableViewDataSource, UITabl
         questionLabel.text = "Choose your \ngender"
         questionLabel.textColor = .white
         questionLabel.numberOfLines = 0
-        questionLabel.font = UIFont(name: "Kefa", size: 40)
+        questionLabel.font = UIFont(name: "Helvetica", size: 40)
         questionLabel.adjustsFontSizeToFitWidth = true
         questionLabel.backgroundColor = .clear
         
@@ -788,7 +822,7 @@ class OccupationTableViewController: UIViewController, UITableViewDataSource, UI
         questionLabel.text = "Choose your \noccupation"
         questionLabel.textColor = .white
         questionLabel.numberOfLines = 0
-        questionLabel.font = UIFont(name: "Kefa", size: 40)
+        questionLabel.font = UIFont(name: "Helvetica", size: 40)
         questionLabel.adjustsFontSizeToFitWidth = true
         questionLabel.backgroundColor = .clear
         
@@ -851,12 +885,17 @@ class OccupationTableViewController: UIViewController, UITableViewDataSource, UI
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let heroCollectionViewController = HeroesCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
+        
         Occupation.allCases.forEach {
             if $0.rawValue.lowercased() == dataModel.elementsList[indexPath.row].elements[0].title.lowercased() {
                 self.user.occupation = $0
             }
         }
+        print(dataModel.elementsList[indexPath.row].elements[0].title.lowercased())
+        print(user.occupation)
+        let heroDataManager = TableDataManger<HeroItem>(gender: user.gender, occupation: user.occupation, country: user.region.regionName)
         heroCollectionViewController.user = user
+        heroCollectionViewController.dataManager = heroDataManager.elementsList
         tableView.deselectRow(at: indexPath, animated: true)
         navigationController?.pushViewController(heroCollectionViewController, animated: true)
     }
@@ -869,28 +908,23 @@ class OccupationTableViewController: UIViewController, UITableViewDataSource, UI
 
 class HeroesCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    var dataManager: TableDataManger<HeroItem>!
+    var dataManager: [HeroItem]!
     var user: User!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.collectionView.register(HeroCollectionViewCell.self, forCellWithReuseIdentifier: "heroCell")
-        if let user = user {
-            self.dataManager = TableDataManger<HeroItem>(gender: user.gender, occupation: user.occupation, country: user.region.regionName)
-        } else {
-            self.dataManager = TableDataManger<HeroItem>(gender: .man, occupation: .developer, country: "Africa")
-        }
         
-        if self.dataManager.elementsList.count == 0 {
-            let alertNavigateController = UIAlertController(title: "You can see found Heroes!", message: "Swipe Right to navigate to Europe -> Unspecified -> Inventors", preferredStyle: .actionSheet)
+        if self.dataManager.count == 0 {
+            let alertNavigateController = UIAlertController(title: "We are still searching for info...", message: "For example, to see found Heroes ⚛︎, \nYou can Swipe Right to move \nto America(USA)-unspecified-inventor ✦", preferredStyle: .actionSheet)
             let alertNavigateAction = UIAlertAction(title: "Dismiss", style: .cancel, handler: { _ in
                 self.navigationController?.popViewController(animated: true)
             })
             alertNavigateController.addAction(alertNavigateAction)
             
-            let alertContoller = UIAlertController(title: "No Heroes found in this section", message: "We are still searching. You can become first of them!", preferredStyle: .alert)
-            let alertAction = UIAlertAction(title: "Dismiss", style: .cancel, handler: { _ in
+            let alertContoller = UIAlertController(title: "No Heroes found in this section 😔", message: "We are still searching.\n You can become first of them 🤠!", preferredStyle: .alert)
+            let alertAction = UIAlertAction(title: "OK", style: .cancel, handler: { _ in
                 self.present(alertNavigateController, animated: true, completion: nil)
             })
             
@@ -919,7 +953,7 @@ class HeroesCollectionViewController: UICollectionViewController, UICollectionVi
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        dataManager.elementsList.count
+        dataManager.count
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -930,7 +964,7 @@ class HeroesCollectionViewController: UICollectionViewController, UICollectionVi
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "heroCell", for: indexPath) as! HeroCollectionViewCell
         let subCellView = cell.contentView.subviews[0]
-        let heroByIndex = dataManager.elementsList[indexPath.row]
+        let heroByIndex = dataManager[indexPath.row]
 
         cell.heroImageView.image = heroByIndex.image.small
         cell.heroNameLabel.text = heroByIndex.name
@@ -978,11 +1012,11 @@ class HeroesCollectionViewController: UICollectionViewController, UICollectionVi
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let descriptionViewController = HeroDescriptionViewController()
-        descriptionViewController.image = dataManager.elementsList[indexPath.item].image.large
-        descriptionViewController.name = dataManager.elementsList[indexPath.item].name
-        descriptionViewController.country = dataManager.elementsList[indexPath.item].elements[0].title + " \(dataManager.elementsList[indexPath.item].elements[0].emoji)"
-        descriptionViewController.information = dataManager.elementsList[indexPath.item].information
-        descriptionViewController.quotes = dataManager.elementsList[indexPath.item].quotes
+        descriptionViewController.image = dataManager[indexPath.item].image.large
+        descriptionViewController.name = dataManager[indexPath.item].name
+        descriptionViewController.country = dataManager[indexPath.item].elements[0].title + " \(dataManager[indexPath.item].elements[0].emoji)"
+        descriptionViewController.information = dataManager[indexPath.item].information
+        descriptionViewController.quotes = dataManager[indexPath.item].quotes
         
         print(indexPath.item)
         showDetailViewController(descriptionViewController, sender: nil)
@@ -1041,7 +1075,7 @@ class HeroDescriptionViewController: UIViewController {
         textView.isEditable = false
         textView.font = UIFont(name: "HelveticaNeue", size: 14)
         
-        quoteStackView.spacing = 8
+        quoteStackView.spacing = 3
         quoteStackView.alignment = .trailing
         quoteStackView.distribution = .fillEqually
         quoteStackView.axis = .vertical
@@ -1051,7 +1085,7 @@ class HeroDescriptionViewController: UIViewController {
             quoteLabel.textAlignment = .right
             quoteLabel.text = quote
             quoteLabel.font = UIFont(name: "HelveticaNeue-Italic", size: 12)
-            quoteLabel.numberOfLines = 2
+            quoteLabel.numberOfLines = 3
             quoteLabel.textColor = .gray
             quoteStackView.addArrangedSubview(quoteLabel)
         }
@@ -1237,6 +1271,7 @@ PlaygroundPage.current.liveView = navigationContoller
 
 final class ImageManager {
     var arrayOfImages = [UIImage]()
+    var detailLabels = ["See that everything is possible", "Follow the instruction", "Find your like-minded Heroes"]
     private var imageCounter = 0
     
     var imageCount: Int {
@@ -1251,39 +1286,42 @@ final class ImageManager {
         }
     }
     
-    func getImage(next: Bool) -> UIImage? {
+    func getImage(next: Bool) -> (image: UIImage?, detail: String?) {
         if arrayOfImages.count != 0 && next {
             if imageCounter == 0 {
                 imageCounter = 1
             }
             let resultImage = arrayOfImages[imageCounter]
+            let resultDetail = imageCounter < 3 ? detailLabels[imageCounter] : nil
             if imageCounter + 1 != arrayOfImages.count {
                 imageCounter = imageCounter + 1
             }
             print("increase \(imageCounter)")
-            return resultImage
+            return (image: resultImage, detail: resultDetail)
         } else if !next {
             
             if imageCounter - 1 != -1 {
                 imageCounter = imageCounter - 1
             }
             let resultImage = arrayOfImages[imageCounter]
+            let resultDetail = imageCounter < 3 ? detailLabels[imageCounter] : nil
             print("decrease \(imageCounter)")
-            return resultImage
+            return (image: resultImage, detail: resultDetail)
         }
-        return nil
+        return (image: nil, detail: nil)
     }
     
-    func getFirstImage() -> UIImage? {
+    func getFirstImage() -> (image: UIImage?, detail: String?) {
         if arrayOfImages.count != 0 {
             let resultImage = arrayOfImages[imageCounter]
+            let resultDetail = imageCounter < 3 ? detailLabels[imageCounter] : nil
             if imageCounter + 1 != arrayOfImages.count {
                 imageCounter = imageCounter + 1
             }
             print("increase \(imageCounter)")
-            return resultImage
+            return (image: resultImage, detail: resultDetail)
         }
-        return nil
+        return (image: nil, detail: nil)
     }
 }
 

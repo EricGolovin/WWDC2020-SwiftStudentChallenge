@@ -511,10 +511,9 @@ There’s no doubt that he had a huge influence on society, though. His inventio
 		<array>
 			<string>“Your time is limited, so don’t waste it living someone else’s life.”</string>
 			<string>“Don’t let the noise of others’ opinions drown out your own inner voice.”</string>
-			<string>“Have the courage to follow your heart and intuition. They somehow already know what you truly want to become.”</string>
 		</array>
 		<key>Info</key>
-		<string>Steven Paul Jobs was an American business magnate, industrial designer, investor, and media proprietor. He was the chairman, chief executive officer (CEO), and co-founder of Apple Inc., the chairman and majority shareholder of Pixar, a member of The Walt Disney Company&apos;s board of directors following its acquisition of Pixar, and the founder, chairman, and CEO of NeXT. Jobs is widely recognized as a pioneer of the personal computer revolution of the 1970s and 1980s, along with Apple co-founder Steve Wozniak.
+		<string>Steven Paul Jobs was an American business magnate, industrial designer, investor, media proprietor and this app developer&apos;s HERO. He was the chairman, chief executive officer (CEO), and co-founder of Apple Inc., the chairman and majority shareholder of Pixar, a member of The Walt Disney Company&apos;s board of directors following its acquisition of Pixar, and the founder, chairman, and CEO of NeXT. Jobs is widely recognized as a pioneer of the personal computer revolution of the 1970s and 1980s, along with Apple co-founder Steve Wozniak.
 
 Jobs was born in San Francisco, California, and put up for adoption. He was raised in the San Francisco Bay Area. He attended Reed College in 1972 before dropping out that same year, and traveled through India in 1974 seeking enlightenment and studying Zen Buddhism. His declassified FBI report states that he used marijuana and LSD while he was in college, and once told a reporter that taking LSD was &quot;one of the two or three most important things&quot; he had done in his life.
 
@@ -525,6 +524,8 @@ Apple acquired NeXT in 1997, and Jobs became CEO of his former company within a 
 		<array>
 			<string>investor</string>
 			<string>entrepreneur</string>
+			<string>developer</string>
+			<string>inventor</string>
 		</array>
 		<key>Gender</key>
 		<string>man</string>
@@ -909,7 +910,7 @@ To do with you what spring does with the cherry trees.”</string>
 	</dict>
 	<dict>
 		<key>Image</key>
-		<string>Miguel de Icaza</string>
+		<string>MigueldeIcaza</string>
 		<key>Name</key>
 		<string>Miguel de Icaza</string>
 		<key>Country</key>
@@ -937,7 +938,7 @@ To do with you what spring does with the cherry trees.”</string>
 		<string>Mexico 🇲🇽 America</string>
 		<key>Quotes</key>
 		<array>
-			<string>It might have been ignited by President Donald Trump, but it&apos;s not about President Donald Trump, it&apos;s about the importance of science in society and continuing the support for the science community in keeping our edge.</string>
+			<string>-</string>
 		</array>
 		<key>Info</key>
 		<string>Lydia Villa-Komaroff (born August 7, 1947) is a molecular and cellular biologist who has been an academic laboratory scientist, a university administrator, and a business woman. She was the third[1] Mexican American woman in the United States to receive a doctorate degree in the sciences (1975) and is a co-founding member of The Society for the Advancement of Chicanos/Hispanics and Native Americans in Science (SACNAS).[2] Her most notable discovery was in 1978 during her post-doctoral research, when she was part of a team that discovered how bacterial cells could be used to generate insulin</string>
